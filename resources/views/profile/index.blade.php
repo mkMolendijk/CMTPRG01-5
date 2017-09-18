@@ -4,10 +4,6 @@
     {{Auth::user()->name}}'s profile
 @endsection
 
-@section('head')
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-@endsection
-
 @section('content')
     <div class="container">
         <div class="row">
@@ -18,6 +14,10 @@
                     </div>
                     <div class="panel-body">
                         <table class="table">
+                            <tr>
+                                <td>Name:</td>
+                                <td>{{Auth::user()->name}}</td>
+                            </tr>
                             <tr>
                                 <td>Email address:</td>
                                 <td>{{Auth::user()->email}}</td>
@@ -68,8 +68,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('footer')
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 @endsection
