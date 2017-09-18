@@ -21,4 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Profile page route
 Route::get('/profile', 'ProfileController@index');
-Route::patch('/profile/update', 'ProfileController@update');
+// Profile edit routes
+Route::patch('/profile/updateName', 'ProfileController@updateName');
+Route::patch('/profile/updateEmail', 'ProfileController@updateEmail');
+Route::patch('/profile/updatePassword', 'ProfileController@updatePassword');

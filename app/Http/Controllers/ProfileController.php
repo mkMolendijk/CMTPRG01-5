@@ -18,19 +18,44 @@ class profileController extends Controller
         return view('profile.index');
     }
 
-    public function update(Request $request)
+    public function updateName(Request $request)
+    {
+        // Get User ID
+        $userId = Auth::getUser()->id;
+        // Set POST data to var
+        $name = $request->inputName;
+
+        // Build query
+        $queryArr = ['id' => $userId, 'name' => $name];
+
+        // Run query
+        $user = User::where('id', '=', $userId)->first()->update($queryArr);
+
+        // Redirect back to profile page
+        return redirect('/profile');
+    }
+
+    public function updateEmail(Request $request)
     {
         $userId = Auth::getUser()->id;
-
-        $name = $request->inputName;
         $email = $request->inputEmail;
-        $pass = bcrypt($request->inputPassword);
 
-        $queryArr = ['id' => $userId,'name' => $name, 'email' => $email, 'password' => $pass];
+        $queryArr = ['id' => $userId, 'email' => $email];
 
         $user = User::where('id', '=', $userId)->first()->update($queryArr);
 
         return redirect('/profile');
+    }
 
+    public function updatePassword(Request $request)
+    {
+        $userId = Auth::getUser()->id;
+        $pass = bcrypt($request->inputPassword);
+
+        $queryArr = ['id' => $userId, 'password' => $pass];
+
+        $user = User::where('id', '=', $userId)->first()->update($queryArr);
+
+        return redirect('/profile');
     }
 }
