@@ -17,6 +17,9 @@ Route::get('/', function () {
 
 Auth::routes();
 
+//Admin route
+Route::get('admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']);
+
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Profile page route
