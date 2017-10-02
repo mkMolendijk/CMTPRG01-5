@@ -18,9 +18,12 @@ Route::get('/', function () {
 Auth::routes();
 
 //Admin route
-Route::get('admin', ['middleware' => 'admin', 'uses' => 'AdminController@index']);
+Route::group(['middleware' => ['auth', 'admin']], function()
+{
+    Route::get('/admin', 'AdminController@index')->name('admin');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
 // Profile page route
 Route::get('/profile', 'ProfileController@index');
