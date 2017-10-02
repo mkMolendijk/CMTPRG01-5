@@ -83,7 +83,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Laravel
+            My Games List
         </div>
 
         <div class="links">
