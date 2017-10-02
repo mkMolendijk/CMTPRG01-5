@@ -3,6 +3,12 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  padding: 10px;
+
+  .block-link {
+    text-decoration: none;
+    width: 30%;
+  }
 
   .icon-centered {
     text-align: center;

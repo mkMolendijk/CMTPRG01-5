@@ -8359,9 +8359,31 @@ button.close {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  padding: 10px;
+}
+
+.admin-panel-container .block-link {
+  text-decoration: none;
+  width: 30%;
 }
 
 .admin-panel-container .icon-centered {
   text-align: center;
+}
+
+.game-table-head {
+  height: 45px;
+}
+
+.games-table-title {
+  float: left;
+}
+
+.add-game-btn {
+  float: right;
+}
+
+.add-game-btn span {
+  margin: 0 auto;
 }
 

@@ -8,7 +8,10 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-// Custom stylings
+// Custom styles
 
-// Admin panel stylesheet
-@import "adminPanel/admin-panel";
+// Admin panel
+@import "admin-panel";
+
+// User dashboard
+@import "user-dashboard";

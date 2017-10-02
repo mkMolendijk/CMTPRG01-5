@@ -24,6 +24,8 @@ Route::group(['middleware' => ['auth', 'admin']], function()
 });
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+// Dashboard page, add game
+Route::post('/dashboard/addGame', 'DashboardController@addGame');
 
 // Profile page route
 Route::get('/profile', 'ProfileController@index');

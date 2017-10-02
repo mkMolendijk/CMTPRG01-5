@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@include('dashboard/add-game')
 
 @section('content')
     <div class="container">
@@ -14,7 +15,17 @@
                             </div>
                         @endif
 
-                        You are logged in!
+                        <table class="table table-hover">
+                                <div class="game-table-head">
+                                    <h4 class="games-table-title">
+                                        Games:
+                                    </h4>
+                                    <button type="button" class="add-game-btn btn btn-success" data-toggle="modal"
+                                            data-target="#add-game-modal">
+                                        Add game
+                                    </button>
+                                </div>
+                        </table>
                     </div>
                 </div>
             </div>

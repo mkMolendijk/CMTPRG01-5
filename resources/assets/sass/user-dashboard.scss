@@ -1,0 +1,17 @@
+// User dashboard styles
+
+.game-table-head {
+ height: 45px;
+}
+
+.games-table-title {
+  float: left;
+}
+
+.add-game-btn {
+  float: right;
+
+  & span {
+    margin: 0 auto;
+  }
+}
