@@ -16,4 +16,11 @@ class AdminController extends Controller
     public function index() {
         return view('admin/index');
     }
+
+    public function manageUsers() {
+        // Get all users except logged in user
+        $users = User::all()->except(Auth::id());
+
+        return view('admin/manage-users', compact('users'));
+    }
 }

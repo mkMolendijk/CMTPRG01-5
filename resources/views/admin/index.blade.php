@@ -7,17 +7,13 @@
                 <div class="panel panel-primary">
                     <div class="panel-heading">Admin Dashboard</div>
                     <div class="panel-body">
-                        @if (session('status'))
-                            <div class="alert alert-success">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                        @include('partials/session-status')
                         <div class="admin-panel-container">
                             {{--TODO: add links for the admin panel to their own pages.--}}
-                            <a class="block-link" href="#">
+                            <a class="block-link" href="{{ url('/admin/manage-users') }}">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        Link to users list
+                                        Manage users
                                     </div>
                                     <div class="panel-body">
                                         <h1 class="icon-centered">
