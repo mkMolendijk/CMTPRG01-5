@@ -3,6 +3,15 @@
 @section('content')
 
     <div class="container">
+        <div class="row spacing-bottom">
+            <div class="col-md-8 col-md-offset-2">
+                <a href="{{ url('/admin') }}" class="btn btn-default">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    Return to admin panel
+                </a>
+            </div>
+        </div>
+
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-primary">
@@ -13,43 +22,46 @@
                             <thead>
                             <td>
                                 <strong>
-                                    Name:
+                                    Id
                                 </strong>
                             </td>
                             <td>
                                 <strong>
-                                    Email address:
+                                    Name
                                 </strong>
                             </td>
                             <td>
                                 <strong>
-                                    Enabled:
+                                    Email address
                                 </strong>
                             </td>
                             <td>
                                 <strong>
-                                    Role:
+                                    Enabled
+                                </strong>
+                            </td>
+                            <td>
+                                <strong>
+                                    Role
                                 </strong>
                             </td>
                             </thead>
                             @foreach($users as $user)
-                                <a data-toggle="collapse" href="@include('partials/user-edit-collapse')"
-                                   aria-expanded="false" aria-controls="userEditCollapse">
-                                    <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->email }}</td>
-                                        @if($user->enabled == 0)
-                                            <td>Disabled</td>
-                                        @else
-                                            <td>Enabled</td>
-                                        @endif
-                                        @if($user->admin == 1)
-                                            <td>Admin</td>
-                                        @else
-                                            <td>User</td>
-                                        @endif
-                                    </tr>
-                                </a>
+                                <tr data-toggle="modal" data-target="#edit-user-modal">
+                                    <td>{{ $user->id }}</td>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    @if($user->enabled == 0)
+                                        <td>Disabled</td>
+                                    @else
+                                        <td>Enabled</td>
+                                    @endif
+                                    @if($user->admin == 1)
+                                        <td>Admin</td>
+                                    @else
+                                        <td>User</td>
+                                    @endif
+                                </tr>
                             @endforeach
                         </table>
                     </div>

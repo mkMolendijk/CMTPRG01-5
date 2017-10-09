@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@include('dashboard/add-game')
+@include('partials.add-game-modal')
 
 @section('content')
     <div class="container">
