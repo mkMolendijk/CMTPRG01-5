@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Genre;
 use App\User;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -22,5 +23,23 @@ class AdminController extends Controller
         $users = User::all()->except(Auth::id());
 
         return view('admin/manage-users', compact('users'));
+    }
+
+    public function manageGames() {
+        return view('admin/manage-games');
+    }
+
+    public function manageGenres() {
+        // Get all the genres
+        $genres = Genre::all();
+
+        return view('admin/manage-genres', compact('genres'));
+    }
+
+    public function addGenre(Request $request) {
+
+        return Genre::create([
+            'title' => $data['title']
+        ]);
     }
 }

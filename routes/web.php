@@ -20,8 +20,14 @@ Auth::routes();
 //Admin route
 Route::group(['middleware' => ['auth', 'admin']], function()
 {
+    // View routes
     Route::get('/admin', 'AdminController@index')->name('admin');
     Route::get('/admin/manage-users', 'AdminController@manageUsers');
+    Route::get('/admin/manage-games', 'AdminController@manageGames');
+    Route::get('/admin/manage-genres', 'AdminController@manageGenres');
+
+    // POST routes
+    //Route::post('/admin/add-genre-modal', 'AdminController@manageGenre');
 });
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

@@ -12,4 +12,8 @@ class Game extends Model
         return $this->belongsTo('User');
     }
 
+    public function genres() {
+        return $this->hasMany('Genre');
+    }
+
 }

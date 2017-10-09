@@ -9,7 +9,6 @@
                     <div class="panel-body">
                         @include('partials/session-status')
                         <div class="admin-panel-container">
-                            {{--TODO: add links for the admin panel to their own pages.--}}
                             <a class="block-link" href="{{ url('/admin/manage-users') }}">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
@@ -22,11 +21,10 @@
                                     </div>
                                 </div>
                             </a>
-                            {{--TODO: add links for the admin panel to their own pages.--}}
-                            <a class="block-link" href="#">
+                            <a class="block-link" href="{{ url('/admin/manage-games') }}">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
-                                        Link to games list
+                                        Manage games
                                     </div>
                                     <div class="panel-body">
                                         <h1 class="icon-centered">
@@ -35,8 +33,7 @@
                                     </div>
                                 </div>
                             </a>
-                            {{--TODO: add links for the admin panel to their own pages.--}}
-                            <a class="block-link" href="#">
+                            <a class="block-link" href="{{ url('/admin/manage-genres') }}">
                                 <div class="panel panel-primary">
                                     <div class="panel-heading">
                                         Manage Genre's
