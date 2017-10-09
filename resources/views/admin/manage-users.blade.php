@@ -47,19 +47,35 @@
                             </td>
                             </thead>
                             @foreach($users as $user)
-                                <tr data-toggle="modal" data-target="#edit-user-modal">
+                                <tr>
                                     <td>{{ $user->id }}</td>
                                     <td>{{ $user->name }}</td>
                                     <td>{{ $user->email }}</td>
                                     @if($user->enabled == 0)
-                                        <td>Disabled</td>
+                                        <td>
+                                            <a href="#">
+                                                Disabled
+                                            </a>
+                                        </td>
                                     @else
-                                        <td>Enabled</td>
+                                        <td>
+                                            <a href="#">
+                                                Enabled
+                                            </a>
+                                        </td>
                                     @endif
                                     @if($user->admin == 1)
-                                        <td>Admin</td>
+                                        <td>
+                                            <a href="#">
+                                                Admin
+                                            </a>
+                                        </td>
                                     @else
-                                        <td>User</td>
+                                        <td>
+                                            <a href="#">
+                                                User
+                                            </a>
+                                        </td>
                                     @endif
                                 </tr>
                             @endforeach
