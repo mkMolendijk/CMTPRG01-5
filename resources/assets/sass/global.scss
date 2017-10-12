@@ -6,3 +6,10 @@
 .spacing-bottom {
   margin-bottom: 22px;
 }
+
+// Table exceptions
+// <td>
+
+.user-table .td-centered {
+  vertical-align: middle;
+}

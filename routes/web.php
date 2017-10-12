@@ -26,6 +26,10 @@ Route::group(['middleware' => ['auth', 'admin']], function()
     Route::get('/admin/manage-games', 'AdminController@manageGames');
     Route::get('/admin/manage-genres', 'AdminController@manageGenres');
 
+    // User status routes
+    Route::get('/admin/{id}/toggleEnabledStatus', 'AdminController@toggleEnabledStatus');
+    Route::get('/admin/{id}/toggleAdminStatus', 'AdminController@toggleAdminStatus');
+
     // POST routes
     Route::post('/admin/addGenre', 'AdminController@addGenre');
 });

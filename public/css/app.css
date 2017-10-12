@@ -8358,6 +8358,10 @@ button.close {
   margin-bottom: 22px;
 }
 
+.user-table .td-centered {
+  vertical-align: middle;
+}
+
 .admin-panel-container {
   display: -webkit-box;
   display: -ms-flexbox;

@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('head')
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+@endsection
 @section('content')
 
     <div class="container">
@@ -18,7 +20,7 @@
                     <div class="panel-heading">Manage Users</div>
                     <div class="panel-body">
                         @include('partials/session-status')
-                        <table class="table table-hover">
+                        <table class="table user-table">
                             <thead>
                             <td>
                                 <strong>
@@ -37,46 +39,44 @@
                             </td>
                             <td>
                                 <strong>
-                                    Enabled
+                                    Role
                                 </strong>
                             </td>
                             <td>
                                 <strong>
-                                    Role
+                                    Enabled
+                                </strong>
+                            </td>
+
+                            <td>
+                                <strong>
+                                    Is admin
                                 </strong>
                             </td>
                             </thead>
                             @foreach($users as $user)
                                 <tr>
-                                    <td>{{ $user->id }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    @if($user->enabled == 0)
-                                        <td>
-                                            <a href="#">
-                                                Disabled
-                                            </a>
-                                        </td>
-                                    @else
-                                        <td>
-                                            <a href="#">
-                                                Enabled
-                                            </a>
-                                        </td>
-                                    @endif
+                                    <td class="td-centered">{{ $user->id }}</td>
+                                    <td class="td-centered">{{ $user->name }}</td>
+                                    <td class="td-centered">{{ $user->email }}</td>
                                     @if($user->admin == 1)
-                                        <td>
-                                            <a href="#">
-                                                Admin
-                                            </a>
+                                        <td class="td-centered">
+                                            Admin
                                         </td>
                                     @else
-                                        <td>
-                                            <a href="#">
-                                                User
-                                            </a>
+                                        <td class="td-centered">
+                                            User
                                         </td>
                                     @endif
+                                    <td>
+                                        <input type="checkbox" id="{{$user->id}}" class="enabled" data-toggle="toggle"
+                                               @if($user->enabled)checked @endif >
+
+                                    </td>
+                                    <td>
+                                        <input type="checkbox" id="{{$user->id}}" class="is-admin" data-toggle="toggle"
+                                               @if($user->admin)checked @endif >
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>
@@ -86,4 +86,23 @@
         </div>
     </div>
 
+@endsection
+
+@section('footer')
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input.enabled:checkbox').change(function (e) {
+                $.get('/admin/' + e.target.id + '/toggleEnabledStatus', null, function (r) {
+                    console.log(r);
+                });
+            });
+
+            $('input.is-admin:checkbox').change(function (e) {
+                $.get('/admin/' + e.target.id + '/toggleAdminStatus', null, function (r) {
+                    console.log(r);
+                });
+            });
+        });
+    </script>
 @endsection
