@@ -6,22 +6,21 @@
                 </button>
                 <h4 class="modal-title" id="addGenreLabel">Add a genre</h4>
             </div>
-            <div class="modal-body">
-                <form class="form-horizontal" method="POST" action="">
-                    {{ method_field('POST') }}
-                    {{ csrf_field() }}
-                    <div class="form-group">
-                        <label for="game-title">Title:</label>
-                        <input type="text" class="form-control" id="genreTitle" placeholder="Genre title">
-                    </div>
+            <form role="addGenre" method="POST" action="{{ url('admin/addGenre') }}">
+                {{ method_field('POST') }}
+                {{ csrf_field() }}
+                <div class="modal-body">
 
-                    <button type="submit" class="btn btn-default">Submit</button>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+                    <div class="form-group">
+                        <label for="genreTitle">Enter a genre:</label>
+                        <input type="text" class="form-control" id="genreTitle" name="genreTitle" placeholder="Genre title">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

@@ -27,7 +27,7 @@ Route::group(['middleware' => ['auth', 'admin']], function()
     Route::get('/admin/manage-genres', 'AdminController@manageGenres');
 
     // POST routes
-    //Route::post('/admin/add-genre-modal', 'AdminController@manageGenre');
+    Route::post('/admin/addGenre', 'AdminController@addGenre');
 });
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');

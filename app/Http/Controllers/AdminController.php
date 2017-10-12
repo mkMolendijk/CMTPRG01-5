@@ -38,8 +38,12 @@ class AdminController extends Controller
 
     public function addGenre(Request $request) {
 
-        return Genre::create([
-            'title' => $data['title']
-        ]);
+        $genre = new Genre;
+
+        $genre->title = $request->genreTitle;
+
+        $genre->save();
+
+        return redirect('/admin/manage-genres')->with('message', 'Successfully saved genre');
     }
 }

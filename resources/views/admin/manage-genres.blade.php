@@ -1,7 +1,5 @@
 @extends('layouts.app')
 
-@include('add-genre-modal')
-
 @section('content')
 
     <div class="container">
@@ -11,7 +9,7 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to admin panel
                 </a>
-                <a href="#addGenre" class="btn btn-success pull-right">
+                <a class="btn btn-success pull-right" data-toggle="modal" data-target="#addGenre">
                     <span class="glyphicon glyphicon-plus"></span>
                     Add genre
                 </a>
@@ -49,5 +47,7 @@
             </div>
         </div>
     </div>
+
+@include('admin/add-genre-modal')
 
 @endsection
