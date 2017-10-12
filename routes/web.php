@@ -32,9 +32,11 @@ Route::group(['middleware' => ['auth', 'admin']], function()
 
     // POST routes
     Route::post('/admin/addGenre', 'AdminController@addGenre');
+    Route::post('/admin/addGame', 'AdminController@addGame');
 });
 
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+
 // Dashboard page, add game
 Route::post('/dashboard/addGame', 'DashboardController@addGame');
 
