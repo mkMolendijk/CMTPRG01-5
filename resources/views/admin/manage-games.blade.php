@@ -47,13 +47,10 @@
                             </thead>
                             @foreach($games as $game)
                                 <tr>
-                                    <pre>{{ var_dump($game) }}</pre>
                                     <td class="td-centered">{{ $game->id }}</td>
                                     <td class="td-centered">{{ $game->title }}</td>
-                                    <td class="td-centered"><img class="user-table-cover" src="{{ $game->image }}"></td>
-                                    @foreach($genres as $genre)
-                                        <td class="td-centered">{{ $genre->title }}</td>
-                                    @endforeach
+                                    <td class="td-centered">{{ $genreTitle }}</td>
+                                    <td class="td-cover td-centered"><img class="game-cover" src="{{ $game->image }}"></td>
                                 </tr>
                             @endforeach
                         </table>

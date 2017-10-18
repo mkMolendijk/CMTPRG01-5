@@ -55,13 +55,20 @@ class AdminController extends Controller
         // Get all games
         $games = Game::all();
 
+        foreach ($games as $game) {
+            $genreId = $game->genre_id;
+        }
         // Get genre by id
-        $genreId = $games->genre_id;
+//        $genreId = $games->genre_id;
 
         //Get all genres
-        $genre = Genre::where('id', '=', $genreId)->get();
+        $genres = Genre::where('id', '=', $genreId)->get();
 
-        return view('admin/manage-games', compact('games', 'genres'));
+        foreach ($genres as $genre) {
+            $genreTitle = $genre['title'];
+        }
+
+        return view('admin/manage-games', compact('games', 'genres', 'genreTitle'));
     }
 
     public function addGame(Request $request)
@@ -70,9 +77,13 @@ class AdminController extends Controller
 
         $game->title = $request->gameTitle;
 
-        $gameImgPath = '/public/images/';
         $fileName = $request->gameImg->getClientOriginalName();
-        $game->image = $gameImgPath.$fileName;
+        $fileImg = $request->gameImg;
+        $gameImgPath = public_path().'/images/';
+
+        $fileImg->move($gameImgPath, $fileName);
+
+        $game->image = '/images/' . $fileName;
 
         $genreTitle = $request->gameGenre;
         $genreId = Genre::where('title', '=', $genreTitle)->value('id');
