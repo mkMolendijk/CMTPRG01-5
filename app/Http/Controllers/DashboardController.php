@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Game;
+use App\Genre;
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -18,23 +21,48 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard.index');
+        $games = Game::all();
+
+        foreach ($games as $game) {
+            $genreId = $game->genre_id;
+        }
+
+        //Get all genres
+        $genres = Genre::where('id', '=', $genreId)->get();
+
+        foreach ($genres as $genre) {
+            $genreTitle = $genre['title'];
+        }
+
+        return view('dashboard.index', compact('games', 'genres', 'genreTitle'));
     }
 
     public function addGame(Request $request)
     {
-        // Get User ID
-        $userId = Auth::getUser()->id;
-        // Set POST data to var
-        var_dump($request);
+        $game = new Game;
 
-        // Build query
-//        $queryArr = ['id' => $userId, 'name' => $name];
+        $game->title = $request->gameTitle;
 
-        // Run query
-//        $user = User::where('id', '=', $userId)->first()->update($queryArr);
+        $fileName = $request->gameImg->getClientOriginalName();
+        $fileImg = $request->gameImg;
+        $gameImgPath = public_path().'/images/';
 
-        // Redirect back to profile page
-//        return redirect('/profile');
+        $fileImg->move($gameImgPath, $fileName);
+
+        $game->image = '/images/' . $fileName;
+
+        $genreTitle = $request->gameGenre;
+        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
+        $game->genre_id = $genreId;
+
+        $game->rating = $request->gameRating;
+
+        $game->description = $request->gameDesc;
+
+        $game->user_id = Auth::user()->id;
+
+        $game->save();
+
+        return redirect('/dashboard/manage-games')->with('message', 'Successfully saved game');
     }
 }

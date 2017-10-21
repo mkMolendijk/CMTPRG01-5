@@ -1,30 +1,78 @@
 @extends('layouts.app')
-@include('partials.add-game-modal')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
+                <div class="panel panel-primary">
                     <div class="panel-heading">Dashboard</div>
 
                     <div class="panel-body">
                         @include('partials/session-status')
 
-                        <table class="table table-hover">
-                                <div class="game-table-head">
-                                    <h4 class="games-table-title">
-                                        Games:
-                                    </h4>
-                                    <button type="button" class="add-game-btn btn btn-success" data-toggle="modal"
-                                            data-target="#add-game-modal">
-                                        Add game
-                                    </button>
-                                </div>
-                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <button type="button" class="btn btn-success pull-right spacing-bottom" data-toggle="modal"
+                        data-target="#addGame">
+                    Add game
+                </button>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="panel panel-primary">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">
+                        Games
+
+                        <div class="game-controls pull-right">
+                            <div class="btn-group">
+                                <a href="#" id="list" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-th-list"></span>
+                                    List
+                                </a>
+                                <a href="#" id="grid" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                    Grid
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <!-- Table -->
+                    @include('dashboard/games-list')
+
+                    <!-- Grid -->
+                        @include('dashboard/games-grid')
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+    @include('dashboard/add-game-modal')
+
+@endsection
+
+@section('footer')
+    <script>
+        $(document).ready(function () {
+            $('#list').click(function (event) {
+                event.preventDefault();
+                $('#games-list-table').css('display', 'block');
+                $('#games-flex-grid').css('display', 'none');
+            });
+            $('#grid').click(function (event) {
+                event.preventDefault();
+                $('#games-flex-grid').css('display', 'flex');
+                $('#games-list-table').css('display', 'none');
+            });
+        });
+    </script>
 @endsection

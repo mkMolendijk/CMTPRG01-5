@@ -1,17 +1,21 @@
 // User dashboard styles
-
-.game-table-head {
- height: 45px;
+.game-controls {
+  margin-top: -4px;
 }
 
-.games-table-title {
-  float: left;
+#games-list-table {
+  display: block;
 }
 
-.add-game-btn {
-  float: right;
+#games-flex-grid {
+  display: none;
+  flex-wrap: wrap;
+}
 
-  & span {
-    margin: 0 auto;
-  }
+.grid-item {
+  width: calc(33% - 10px);
+}
+
+.game-title {
+  margin-top: 0;
 }
