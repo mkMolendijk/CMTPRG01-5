@@ -15,10 +15,8 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-primary">
-                    <!-- Default panel contents -->
                     <div class="panel-heading">
                         Games
-
                         <div class="game-controls pull-right">
                             <div class="btn-group">
                                 <a href="#" id="list" class="btn btn-default btn-sm">
