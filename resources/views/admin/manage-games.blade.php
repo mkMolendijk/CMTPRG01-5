@@ -16,6 +16,19 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="input-group custom-search-form spacing-bottom">
+                    <input type="text" class="form-control" name="search" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
         @include('partials/session-status')
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
