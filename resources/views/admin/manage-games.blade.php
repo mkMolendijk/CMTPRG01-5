@@ -16,44 +16,31 @@
             </div>
         </div>
 
+        @include('partials/session-status')
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-primary">
-                    <div class="panel-heading">Manage Games</div>
+                    <div class="panel-heading">
+                        Games
+                        <div class="game-controls pull-right">
+                            <div class="btn-group">
+                                <a href="#" id="list" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-th-list"></span>
+                                    List
+                                </a>
+                                <a href="#" id="grid" class="btn btn-default btn-sm">
+                                    <span class="glyphicon glyphicon-th"></span>
+                                    Grid
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                     <div class="panel-body">
-                        @include('partials/session-status')
-                        <table class="table games-table">
-                            <thead>
-                            <td>
-                                <strong>
-                                    Id
-                                </strong>
-                            </td>
-                            <td>
-                                <strong>
-                                    Title
-                                </strong>
-                            </td>
-                            <td>
-                                <strong>
-                                    Cover image
-                                </strong>
-                            </td>
-                            <td>
-                                <strong>
-                                    Genre
-                                </strong>
-                            </td>
-                            </thead>
-                            @foreach($games as $game)
-                                <tr>
-                                    <td class="td-centered">{{ $game->id }}</td>
-                                    <td class="td-centered">{{ $game->title }}</td>
-                                    <td class="td-centered">{{ $genreTitle }}</td>
-                                    <td class="td-cover td-centered"><img class="game-cover" src="{{ $game->image }}"></td>
-                                </tr>
-                            @endforeach
-                        </table>
+                        <!-- Table -->
+                    @include('admin/games-list')
+
+                    <!-- Grid -->
+                        @include('admin/games-grid')
                     </div>
                 </div>
             </div>
@@ -62,4 +49,21 @@
 
     @include('admin/add-game-modal')
 
+@endsection
+
+@section('footer')
+    <script>
+        $(document).ready(function () {
+            $('#list').click(function (event) {
+                event.preventDefault();
+                $('#games-list').css('display', 'block');
+                $('#games-flex-grid').css('display', 'none');
+            });
+            $('#grid').click(function (event) {
+                event.preventDefault();
+                $('#games-flex-grid').css('display', 'flex');
+                $('#games-list').css('display', 'none');
+            });
+        });
+    </script>
 @endsection

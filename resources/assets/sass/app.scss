@@ -8,14 +8,15 @@
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
 
-// Custom styles
+//====== Custom styles ======
 
 // Global styles
 @import "global";
 
 // Admin panel
-@import "admin-panel";
-@import "manage-games";
+@import "admin/admin-panel";
+@import "admin/manage-games";
+@import "admin/game-detail";
 
 // User dashboard
 @import "user-dashboard";

@@ -25,6 +25,7 @@ Route::group(['middleware' => ['auth', 'admin']], function()
     Route::get('/admin/manage-users', 'AdminController@manageUsers');
     Route::get('/admin/manage-games', 'AdminController@manageGames');
     Route::get('/admin/manage-genres', 'AdminController@manageGenres');
+    Route::get('/admin/game-detail/{id}', 'AdminController@gameDetail');
 
     // User status routes
     Route::get('/admin/{id}/toggleEnabledStatus', 'AdminController@toggleEnabledStatus');

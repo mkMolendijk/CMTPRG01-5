@@ -79,7 +79,7 @@ class AdminController extends Controller
 
         $fileName = $request->gameImg->getClientOriginalName();
         $fileImg = $request->gameImg;
-        $gameImgPath = public_path().'/images/';
+        $gameImgPath = public_path() . '/images/';
 
         $fileImg->move($gameImgPath, $fileName);
 
@@ -98,6 +98,21 @@ class AdminController extends Controller
         $game->save();
 
         return redirect('/admin/manage-games')->with('message', 'Successfully saved game');
+    }
+
+    public function gameDetail($id)
+    {
+        // Get game with id
+        $gameObj = Game::where('id', '=', $id)->first();
+
+        // Get genre with id
+        $genreObj = Genre::where('id', '=', $gameObj->genre_id)->first();
+
+        // Get creator with id
+        $creatorObj = User::where('id', '=', $gameObj->user_id)->first();
+
+        return view('admin/game-detail', compact('gameObj', 'genreObj', 'creatorObj'));
+
     }
 
     public function manageGenres()

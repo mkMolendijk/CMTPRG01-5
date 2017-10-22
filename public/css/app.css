@@ -8399,6 +8399,14 @@ button.close {
   width: 70%;
 }
 
+.game-img {
+  width: 100%;
+}
+
+.game-name {
+  margin-top: 0;
+}
+
 .game-controls {
   margin-top: -4px;
 }
