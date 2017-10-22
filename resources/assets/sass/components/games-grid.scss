@@ -1,0 +1,24 @@
+// Games grid view
+#games-flex-grid {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.grid-item {
+  width: calc(33% - 10px);
+  margin-right: 5px;
+  margin-left: 5px;
+
+  .grid-img {
+    max-height: 210px;
+  }
+
+  .game-title {
+    margin-top: 0;
+  }
+
+  .caption {
+    min-height: 150px;
+  }
+}

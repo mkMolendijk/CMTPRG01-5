@@ -13,9 +13,12 @@
 // Global styles
 @import "global";
 
+// Components
+@import "components/games-grid";
+@import "components/games-list";
+
 // Admin panel
 @import "admin/admin-panel";
-@import "admin/manage-games";
 @import "admin/game-detail";
 
 // User dashboard
