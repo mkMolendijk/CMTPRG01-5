@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace myGamesList\Http\Controllers;
 
-use App\User;
+use myGamesList\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace myGamesList\Http\Controllers;
 
-use App\Game;
-use App\Genre;
-use App\User;
+use myGamesList\Game;
+use myGamesList\Genre;
+use myGamesList\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace myGamesList\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
-use App\User;
+use myGamesList\User;
 
 class RedirectIfAuthenticated
 {
