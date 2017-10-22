@@ -4,6 +4,7 @@ namespace myGamesList\Http\Controllers;
 
 use myGamesList\Game;
 use myGamesList\Genre;
+use myGamesList\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -65,5 +66,20 @@ class DashboardController extends Controller
         $game->save();
 
         return redirect('/dashboard/')->with('message', 'Successfully saved game');
+    }
+
+    public function gameDetail($id)
+    {
+        // Get game with id
+        $gameObj = Game::where('id', '=', $id)->first();
+
+        // Get genre with id
+        $genreObj = Genre::where('id', '=', $gameObj->genre_id)->first();
+
+        // Get creator with id
+        $creatorObj = User::where('id', '=', $gameObj->user_id)->first();
+
+        return view('dashboard/game-detail', compact('gameObj', 'genreObj', 'creatorObj'));
+
     }
 }
