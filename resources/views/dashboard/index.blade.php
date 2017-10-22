@@ -4,19 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Dashboard</div>
-
-                    <div class="panel-body">
-                        @include('partials/session-status')
-
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+                @include('partials/session-status')
                 <button type="button" class="btn btn-success pull-right spacing-bottom" data-toggle="modal"
                         data-target="#addGame">
                     Add game
@@ -65,13 +53,13 @@
         $(document).ready(function () {
             $('#list').click(function (event) {
                 event.preventDefault();
-                $('#games-list-table').css('display', 'block');
+                $('#games-list').css('display', 'block');
                 $('#games-flex-grid').css('display', 'none');
             });
             $('#grid').click(function (event) {
                 event.preventDefault();
                 $('#games-flex-grid').css('display', 'flex');
-                $('#games-list-table').css('display', 'none');
+                $('#games-list').css('display', 'none');
             });
         });
     </script>

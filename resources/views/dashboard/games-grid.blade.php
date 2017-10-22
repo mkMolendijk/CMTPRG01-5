@@ -2,7 +2,7 @@
     @foreach($games as $game)
         <div class="grid-item">
             <div class="thumbnail">
-                <img class="thumbnail" src="{{ $game->image }}">
+                <img class="thumbnail grid-img" src="{{ $game->image }}">
                 <div class="caption">
                     <h3 class="game-title">{{ $game->title }}</h3>
                     <p>{{ $genreTitle }}</p>

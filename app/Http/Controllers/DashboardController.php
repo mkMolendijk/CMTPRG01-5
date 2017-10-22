@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Game;
 use App\Genre;
-use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class DashboardController extends Controller
 {
@@ -28,7 +29,7 @@ class DashboardController extends Controller
         }
 
         //Get all genres
-        $genres = Genre::where('id', '=', $genreId)->get();
+        $genres = Genre::all();
 
         foreach ($genres as $genre) {
             $genreTitle = $genre['title'];
@@ -63,6 +64,6 @@ class DashboardController extends Controller
 
         $game->save();
 
-        return redirect('/dashboard/manage-games')->with('message', 'Successfully saved game');
+        return redirect('/dashboard/')->with('message', 'Successfully saved game');
     }
 }
