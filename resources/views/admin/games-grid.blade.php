@@ -1,7 +1,7 @@
 <div id="games-flex-grid">
     @foreach($games as $game)
         <div class="grid-item">
-            <a href="{{ url('/admin/game-detail/'.$game->id) }}">
+            <a class="grid-link" href="{{ url('/admin/game-detail/'.$game->id) }}">
                 <div class="thumbnail">
                     <img class="thumbnail grid-img" src="{{ $game->image }}">
                     <div class="caption">
