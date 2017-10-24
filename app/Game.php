@@ -2,10 +2,13 @@
 
 namespace myGamesList;
 
+use Laravel\Scout\Searchable;
 use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
+    use Searchable;
+
     protected $fillable = array('title', 'image', 'genre_id', 'rating', 'description');
 
     public function user() {
