@@ -9,14 +9,14 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to admin panel
                 </a>
+                @include('partials/session-status')
                 <a class="btn btn-success pull-right" data-toggle="modal" data-target="#addGame">
                     <span class="glyphicon glyphicon-plus"></span>
                     Add game
                 </a>
             </div>
         </div>
-        @include('partials/search-games')
-        @include('partials/session-status')
+        @include('admin/search-games')
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-primary">
