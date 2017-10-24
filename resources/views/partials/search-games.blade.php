@@ -20,8 +20,7 @@
             </div>
             <div id="games" class="row">
                 <div class="grid-item col-md-8 col-md-offset-2" v-for="game in games">
-                    <a class="grid-link" :href="url">
-                        @{{ url('/admin/game-detail/'.game.id) }}
+                    <a class="grid-link" href="/admin/game-detail/@{{ game.id }}) }}">
                         <div class="thumbnail">
                             <img class="thumbnail grid-img" :src="game.image" alt="@{{ game.title }}"/>
                             <div class="caption">
