@@ -15,40 +15,7 @@
                 </a>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="well well-sm">
-                    <div class="form-group">
-                        <div class="input-group input-group-md">
-                            <div class="icon-addon addon-md">
-                                <input type="text" placeholder="Search..." class="form-control" v-model="query">
-                            </div>
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button" @click="search()" v-if="!loading">Search!</button>
-                                <button class="btn btn-default" type="button" disabled="disabled" v-if="loading">Searching...</button>
-                        </span>
-                        </div>
-                    </div>
-                    <div class="alert alert-danger" role="alert" v-if="error">
-                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                        @{{ error }}
-                    </div>
-                </div>
-                <div id="games" class="row list-group">
-                    <div class="item col-md-8 col-md-offset-2" v-for="game in games">
-                        <div class="thumbnail">
-                            <img class="group list-group-image" :src="game.image" alt="@{{ game.title }}" />
-                            <div class="caption">
-                                <h4 class="group inner list-group-item-heading">@{{ game.title }}</h4>
-                                <p class="group inner list-group-item-text">@{{ game.description }}</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        @include('partials/search-games')
         @include('partials/session-status')
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
