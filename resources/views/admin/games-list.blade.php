@@ -6,7 +6,7 @@
                     <img class="thumbnail list-img pull-left" src="{{ $game->image }}">
                     <div class="caption">
                         <h3 class="game-title">{{ $game->title }}</h3>
-                        <p>{{ $genreTitle }}</p>
+                        <p>{{ $game->genre->title }}</p>
                         <p>{{ $game->description }}</p>
                     </div>
                 </div>

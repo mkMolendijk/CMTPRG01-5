@@ -23,20 +23,10 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        $games = Game::all();
+        // Get all games with genre model
+        $games = Game::with("genre")->get();
 
-        foreach ($games as $game) {
-            $genreId = $game->genre_id;
-        }
-
-        //Get all genres
-        $genres = Genre::all();
-
-        foreach ($genres as $genre) {
-            $genreTitle = $genre['title'];
-        }
-
-        return view('dashboard.index', compact('games', 'genres', 'genreTitle'));
+        return view('admin/manage-games', compact('games'));
     }
 
     public function addGame(Request $request)

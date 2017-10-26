@@ -28,6 +28,6 @@ class User extends Authenticatable
     ];
 
     public function games() {
-        return $this->hasMany('Game');
+        return $this->hasMany(Game::class);
     }
 }

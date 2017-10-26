@@ -9,6 +9,6 @@ class Genre extends Model
     protected $fillable = array('title');
 
     public function game() {
-        return $this->belongsTo('Game');
+        return $this->hasMany(Game::class);
     }
 }

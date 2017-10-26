@@ -52,23 +52,10 @@ class AdminController extends Controller
 
     public function manageGames()
     {
-        // Get all games
-        $games = Game::all();
+        // Get all games with genre model
+        $games = Game::with("genre")->get();
 
-        foreach ($games as $game) {
-            $genreId = $game->genre_id;
-        }
-        // Get genre by id
-//        $genreId = $games->genre_id;
-
-        //Get all genres
-        $genres = Genre::where('id', '=', $genreId)->get();
-
-        foreach ($genres as $genre) {
-            $genreTitle = $genre['title'];
-        }
-
-        return view('admin/manage-games', compact('games', 'genres', 'genreTitle'));
+        return view('admin/manage-games', compact('games'));
     }
 
     public function addGame(Request $request)
@@ -104,6 +91,7 @@ class AdminController extends Controller
     {
         // Get game with id
         $gameObj = Game::where('id', '=', $id)->first();
+//        $gameObj = Game::with(['genres', 'user'])->get();
 
         // Get genre with id
         $genreObj = Genre::where('id', '=', $gameObj->genre_id)->first();
@@ -111,6 +99,10 @@ class AdminController extends Controller
         // Get creator with id
         $creatorObj = User::where('id', '=', $gameObj->user_id)->first();
 
+//        echo "<pre>";
+//        var_dump($gameObj);
+//        echo "</pre>";
+//        die;
         return view('admin/game-detail', compact('gameObj', 'genreObj', 'creatorObj'));
 
     }
