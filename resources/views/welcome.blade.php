@@ -70,9 +70,9 @@
         <div class="top-right links">
             @auth
                 @if (Auth::user()['admin'])
-                    <a href="{{ url('/admin') }}">Home</a>
+                    <a href="{{ url('/admin') }}">Admin panel</a>
                 @else
-                    <a href="{{ url('/home') }}">Home</a>
+                    <a href="{{ url('/dashboard') }}">Dashboard</a>
                 @endif
                 @else
                     <a href="{{ route('login') }}">Login</a>
@@ -83,7 +83,7 @@
 
     <div class="content">
         <div class="title m-b-md">
-            Laravel
+            My Games List
         </div>
 
         <div class="links">

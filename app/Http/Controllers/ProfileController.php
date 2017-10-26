@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace myGamesList\Http\Controllers;
 
-use App\User;
+use myGamesList\User;
+use myGamesList\Game;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,7 +16,10 @@ class profileController extends Controller
 
     public function index()
     {
-        return view('profile.index');
+        // Get games from specific user
+        $games = Game::where('user_id', '=', Auth::getUser()->id)->get();
+
+        return view('profile.index', compact('games'));
     }
 
     public function updateName(Request $request)

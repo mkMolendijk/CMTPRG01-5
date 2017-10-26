@@ -17,16 +17,37 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Admin route
+//Admin routes
 Route::group(['middleware' => ['auth', 'admin']], function()
 {
+    // View routes
     Route::get('/admin', 'AdminController@index')->name('admin');
+    Route::get('/admin/manage-users', 'AdminController@manageUsers');
+    Route::get('/admin/manage-games', 'AdminController@manageGames');
+    Route::get('/admin/manage-genres', 'AdminController@manageGenres');
+    Route::get('/admin/game-detail/{id}', 'AdminController@gameDetail');
+
+    // User status routes
+    Route::get('/admin/{id}/toggleEnabledStatus', 'AdminController@toggleEnabledStatus');
+    Route::get('/admin/{id}/toggleAdminStatus', 'AdminController@toggleAdminStatus');
+
+    //TODO: toggle game status routes
+
+    // POST routes
+    Route::post('/admin/addGenre', 'AdminController@addGenre');
+    Route::post('/admin/addGame', 'AdminController@addGame');
 });
 
+// User routes
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+Route::get('/dashboard/game-detail/{id}', 'DashboardController@gameDetail');
+
+// Dashboard page, add game
+Route::post('/dashboard/addGame', 'DashboardController@addGame');
 
 // Profile page route
 Route::get('/profile', 'ProfileController@index');
+
 // Profile edit routes
 Route::patch('/profile/updateName', 'ProfileController@updateName');
 Route::patch('/profile/updateEmail', 'ProfileController@updateEmail');

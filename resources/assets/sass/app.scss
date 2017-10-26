@@ -7,3 +7,19 @@
 
 // Bootstrap
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+//====== Custom styles ======
+
+// Global styles
+@import "global";
+
+// Components
+@import "components/games-grid";
+@import "components/games-list";
+
+// Admin panel
+@import "admin/admin-panel";
+@import "admin/game-detail";
+
+// User dashboard
+@import "dashboard/user-dashboard";

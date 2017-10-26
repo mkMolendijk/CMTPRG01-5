@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Middleware;
+namespace myGamesList\Http\Middleware;
 
 use Illuminate\Support\Facades\Auth;
 

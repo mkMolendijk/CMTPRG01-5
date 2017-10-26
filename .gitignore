@@ -1,6 +1,11 @@
+<<<<<<< HEAD
+=======
+/bower_components
+>>>>>>> dev
 /config
 /database
 /node_modules
+/public/images
 /public/hot
 /public/storage
 /storage/*.key
