@@ -13,9 +13,10 @@
         </div>
         @include('partials/session-status')
         <div class="row">
+            @foreach($gameObj as $game)
             <div class="col-md-4 col-md-offset-2">
                 <div class="game-img-container spacing-bottom">
-                    <img class="game-img" src="{{ $gameObj->image }}" alt="{{ $gameObj->name }}"/>
+                    <img class="game-img" src="{{ $game->image }}" alt="{{ $game->name }}"/>
                 </div>
             </div>
 
@@ -26,41 +27,42 @@
                             Details
                         </div>
                         <div class="panel-body">
-                            <h1 class="game-name">{{ $gameObj->title }}</h1>
+                            <h1 class="game-name">{{ $game->title }}</h1>
                             <strong>
                                 Genre:
                             </strong>
                             <p class="game-genre">
-                                {{ $genreObj->title }}
+                                {{ $game->genre->title }}
                             </p>
                             <strong>
                                 Rating:
                             </strong>
                             <p class="game-rating">
-                                {{ $gameObj->rating }}/5
+                                {{ $game->rating }}/5
                             </p>
                             <strong>
                                 Description:
                             </strong>
                             <p class="game-desc">
-                                {{ $gameObj->description }}
+                                {{ $game->description }}
                             </p>
                             <strong>
                                 Created by:
                             </strong>
                             <p class="created-by">
-                                {{ $creatorObj->name }}
+                                {{ $game->user->name }}
                             </p>
                             <strong>
                                 Created at:
                             </strong>
                             <p class="created-at">
-                                {{ $gameObj->created_at }}
+                                {{ $game->created_at }}
                             </p>
                         </div>
                     </div>
                 </div>
             </div>
+                @endforeach
         </div>
     </div>
 @endsection

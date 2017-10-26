@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <label for="gameGenre">Select genre:</label>
                         <select class="form-control" id="gameGenre" name="gameGenre">
-                            @foreach ($genres as $option)
+                            @foreach ($genre as $option)
                                 <option>{{ $option->title }}</option>
                             @endforeach
                         </select>
