@@ -13,7 +13,7 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to games list
                 </a>
-                <a href="" class="btn btn-default pull-right">
+                <a href="" class="btn btn-default pull-right" data-toggle="modal" data-target="#editGame">
                     <span class="glyphicon glyphicon-pencil"></span>
                     Edit game
                 </a>
@@ -78,6 +78,7 @@
             @endforeach
         </div>
     </div>
+    @include('admin/edit-game-details')
 @endsection
 
 @section('footer')
