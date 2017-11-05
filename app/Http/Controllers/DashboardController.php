@@ -24,7 +24,7 @@ class DashboardController extends Controller
     public function index()
     {
         // Get all games with genre model
-        $games = Game::with("genre")->get();
+        $games = Game::with("genre")->where("enabled", "=", 1)->get();
 
         // Get genres for the add game modal
         $genre = Genre::all();

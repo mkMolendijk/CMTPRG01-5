@@ -8,6 +8,21 @@
                         <h3 class="game-title">{{ $game->title }}</h3>
                         <p>{{ $game->genre->title }}</p>
                         <p>{{ $game->description }}</p>
+                        <div class="status">
+                            @if($game->enabled == "1")
+                                <p class="text-success">
+                                    <strong>
+                                        Enabled
+                                    </strong>
+                                </p>
+                            @else
+                                <p class="text-danger">
+                                    <strong>
+                                        Disabled
+                                    </strong>
+                                </p>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </a>

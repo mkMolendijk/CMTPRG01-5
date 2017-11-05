@@ -99,6 +99,17 @@ class AdminController extends Controller
 
     }
 
+    public function gameStatusToggle($id)
+    {
+        $game = Game::find($id);
+        if ($game->enabled) {
+            $game->enabled = 0;
+        } else {
+            $game->enabled = 1;
+        }
+        $game->save();
+    }
+
     public function manageGenres()
     {
         // Get all the genres

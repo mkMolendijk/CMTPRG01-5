@@ -17,6 +17,7 @@
   margin-left: 5px;
 
   .thumbnail {
+    min-height: 100%;
     &:hover {
       background-color: #f5f5f5;
     }
@@ -28,9 +29,14 @@
 
   .game-title {
     margin-top: 0;
+    min-height: 60px;
   }
 
   .caption {
     min-height: 150px;
+  }
+
+  .status {
+    padding: 9px;
   }
 }

@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@section('head')
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/bootstrap-editable.css">
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -8,6 +13,10 @@
                 <a href="{{ url('/admin/manage-games') }}" class="btn btn-default">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to games list
+                </a>
+                <a href="" class="btn btn-default pull-right">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                    Edit game
                 </a>
             </div>
         </div>
@@ -58,6 +67,11 @@
                                 <p class="created-at">
                                     {{ $game->created_at }}
                                 </p>
+
+                                <div class="enabled-status">
+                                    <input type="checkbox" id="{{$game->id}}" class="enabled" data-toggle="toggle"
+                                           @if($game->enabled)checked @endif >
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -65,4 +79,23 @@
             @endforeach
         </div>
     </div>
+@endsection
+
+@section('footer')
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script src="/public/js/bootstrap-editable.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('input.enabled:checkbox').change(function (e) {
+                $.get('/admin/' + e.target.id + '/gameStatusToggle', null, function (r) {
+                    console.log(r);
+                });
+            });
+        });
+
+//        $(document).ready(function() {
+//            // Set popup as default
+//            $.fn.editable.defaults.mode = 'popup';
+//        });
+    </script>
 @endsection

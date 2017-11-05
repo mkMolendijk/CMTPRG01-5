@@ -1,5 +1,5 @@
 <div id="games-list">
-    @foreach($games as $game)
+    @forelse($games as $game)
         <div class="list-item spacing-bottom">
             @if ($game->user->admin === 1)
                 <a class="list-link" href="{{ url('/admin/game-detail/'.$game->id) }}">
@@ -16,5 +16,7 @@
                             </div>
                         </a>
         </div>
-    @endforeach
+        @empty
+            <div class="alert alert-danger" role="alert">No games found</div>
+        @endforelse
 </div>

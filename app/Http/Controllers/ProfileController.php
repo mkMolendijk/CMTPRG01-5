@@ -17,7 +17,7 @@ class profileController extends Controller
     public function index()
     {
         // Get games from specific user
-        $games = Game::with("genre")->where('user_id', '=', Auth::getUser()->id)->get();
+        $games = Game::with("genre")->where('user_id', '=', Auth::getUser()->id)->where('enabled', '=', 1)->get();
 
         return view('profile.index', compact('games'));
     }
