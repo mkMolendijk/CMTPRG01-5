@@ -2,7 +2,6 @@
 
 @section('head')
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="/public/css/bootstrap-editable.css">
 @endsection
 
 @section('content')
@@ -83,7 +82,6 @@
 
 @section('footer')
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <script src="/public/js/bootstrap-editable.min.js"></script>
     <script>
         $(document).ready(function () {
             $('input.enabled:checkbox').change(function (e) {
@@ -92,10 +90,5 @@
                 });
             });
         });
-
-//        $(document).ready(function() {
-//            // Set popup as default
-//            $.fn.editable.defaults.mode = 'popup';
-//        });
     </script>
 @endsection
