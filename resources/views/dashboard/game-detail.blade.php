@@ -9,9 +9,21 @@
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to dashboard
                 </a>
+                @foreach($gameObj as $game)
+                    @if(Auth::user()->id == $game->user_id)
+                        <a href="" class="btn btn-default pull-right" data-toggle="modal" data-target="#editGame">
+                            <span class="glyphicon glyphicon-pencil"></span>
+                            Edit game
+                        </a>
+                    @endif
+                @endforeach
             </div>
         </div>
-        @include('partials/session-status')
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @include('partials/session-status')
+            </div>
+        </div>
         <div class="row">
             @foreach($gameObj as $game)
                 <div class="col-md-4 col-md-offset-2">
@@ -65,4 +77,5 @@
             @endforeach
         </div>
     </div>
+    @include('dashboard/edit-game-details')
 @endsection

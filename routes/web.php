@@ -46,6 +46,9 @@ Route::group(['middleware' => ['auth', 'admin']], function()
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/dashboard/game-detail/{id}', 'DashboardController@gameDetail');
 
+// Edit game route
+Route::patch('/dashboard/editGameDetails/{id}', 'DashboardController@editGameDetails');
+
 // Dashboard page, add game
 Route::post('/dashboard/addGame', 'DashboardController@addGame');
 

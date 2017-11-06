@@ -66,6 +66,28 @@ class DashboardController extends Controller
         // Get game with id, genre and user
         $gameObj = Game::with(["genre", "user"])->where('id', '=', $id)->get();
 
-        return view('dashboard/game-detail', compact('gameObj'));
+        // Get genres for the edit game modal
+        $genreObj = Genre::all();
+
+        return view('dashboard/game-detail', compact('gameObj', 'genreObj'));
+    }
+
+    public function editGameDetails(Request $request, $id)
+    {
+        $gameObj = Game::find($id);
+
+        $gameObj->title = $request->gameTitle;
+
+        $genreTitle = $request->gameGenre;
+        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
+        $gameObj->genre_id = $genreId;
+
+        $gameObj->rating = $request->gameRating;
+
+        $gameObj->description = $request->gameDesc;
+
+        $gameObj->save();
+
+        return redirect('/dashboard/game-detail/'.$id)->with('message', 'Successfully updated game');
     }
 }

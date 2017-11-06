@@ -94,6 +94,7 @@ class AdminController extends Controller
     {
         // Get game with id, genre and user
         $gameObj = Game::with(["genre", "user"])->where('id', '=', $id)->get();
+
         // Get genres for the edit game modal
         $genreObj = Genre::all();
 
