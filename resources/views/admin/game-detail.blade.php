@@ -19,7 +19,11 @@
                 </a>
             </div>
         </div>
-        @include('partials/session-status')
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                @include('partials/session-status')
+            </div>
+        </div>
         <div class="row">
             @foreach($gameObj as $game)
                 <div class="col-md-4 col-md-offset-2">

@@ -101,6 +101,25 @@ class AdminController extends Controller
 
     }
 
+    public function editGameDetails(Request $request, $id)
+    {
+        $gameObj = Game::find($id);
+
+        $gameObj->title = $request->gameTitle;
+
+        $genreTitle = $request->gameGenre;
+        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
+        $gameObj->genre_id = $genreId;
+
+        $gameObj->rating = $request->gameRating;
+
+        $gameObj->description = $request->gameDesc;
+
+        $gameObj->save();
+
+        return redirect('/admin/game-detail/'.$id)->with('message', 'Successfully updated game');
+    }
+
     public function gameStatusToggle($id)
     {
         $game = Game::find($id);

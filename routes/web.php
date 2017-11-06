@@ -31,12 +31,15 @@ Route::group(['middleware' => ['auth', 'admin']], function()
     Route::get('/admin/{id}/toggleEnabledStatus', 'AdminController@toggleEnabledStatus');
     Route::get('/admin/{id}/toggleAdminStatus', 'AdminController@toggleAdminStatus');
 
-    //Game status routes
+    //Game status route
     Route::get('/admin/{id}/gameStatusToggle', 'AdminController@gameStatusToggle');
 
     // POST routes
     Route::post('/admin/addGenre', 'AdminController@addGenre');
     Route::post('/admin/addGame', 'AdminController@addGame');
+
+    // Edit game route
+    Route::patch('/admin/editGameDetails/{id}', 'AdminController@editGameDetails');
 });
 
 // User routes

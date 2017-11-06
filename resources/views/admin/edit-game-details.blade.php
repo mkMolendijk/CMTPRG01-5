@@ -6,19 +6,15 @@
                 </button>
                 <h4 class="modal-title" id="editGameLabel">Add a game</h4>
             </div>
-            <form role="editGameDetails" method="POST" action="{{ url('admin/editGameDetails') }}"
+            <form role="editGameDetails" method="POST" action="{{ url('admin/editGameDetails/'. $game->id) }}"
                   enctype="multipart/form-data">
-                {{ method_field('POST') }}
+                {{ method_field('PATCH') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="gameTitle">Enter new game title:</label>
                         <input type="text" class="form-control" id="gameTitle" name="gameTitle"
                                value="{{ $game->title }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="gameImg">Upload new game image:</label>
-                        <input type="file" id="gameImg" name="gameImg">
                     </div>
                     <div class="form-group">
                         <label for="gameGenre">Edit genre:</label>
