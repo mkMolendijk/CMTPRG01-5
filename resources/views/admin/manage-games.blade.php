@@ -47,7 +47,7 @@
         </div>
     </div>
 
-    {{--@include('admin/add-game-modal')--}}
+    @include('admin/add-game-modal')
 
 @endsection
 

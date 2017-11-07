@@ -55,7 +55,10 @@ class AdminController extends Controller
         // Get all games with genre model
         $games = Game::with("genre")->get();
 
-        return view('admin/manage-games', compact('games'));
+        // Get genres for the add game modal
+        $genre = Genre::all();
+
+        return view('admin/manage-games', compact('games', 'genre'));
     }
 
     public function addGame(Request $request)
@@ -89,22 +92,44 @@ class AdminController extends Controller
 
     public function gameDetail($id)
     {
-        // Get game with id
-        $gameObj = Game::where('id', '=', $id)->first();
-//        $gameObj = Game::with(['genres', 'user'])->get();
+        // Get game with id, genre and user
+        $gameObj = Game::with(["genre", "user"])->where('id', '=', $id)->get();
 
-        // Get genre with id
-        $genreObj = Genre::where('id', '=', $gameObj->genre_id)->first();
+        // Get genres for the edit game modal
+        $genreObj = Genre::all();
 
-        // Get creator with id
-        $creatorObj = User::where('id', '=', $gameObj->user_id)->first();
+        return view('admin/game-detail', compact('gameObj', 'genreObj'));
 
-//        echo "<pre>";
-//        var_dump($gameObj);
-//        echo "</pre>";
-//        die;
-        return view('admin/game-detail', compact('gameObj', 'genreObj', 'creatorObj'));
+    }
 
+    public function editGameDetails(Request $request, $id)
+    {
+        $gameObj = Game::find($id);
+
+        $gameObj->title = $request->gameTitle;
+
+        $genreTitle = $request->gameGenre;
+        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
+        $gameObj->genre_id = $genreId;
+
+        $gameObj->rating = $request->gameRating;
+
+        $gameObj->description = $request->gameDesc;
+
+        $gameObj->save();
+
+        return redirect('/admin/game-detail/'.$id)->with('message', 'Successfully updated game');
+    }
+
+    public function gameStatusToggle($id)
+    {
+        $game = Game::find($id);
+        if ($game->enabled) {
+            $game->enabled = 0;
+        } else {
+            $game->enabled = 1;
+        }
+        $game->save();
     }
 
     public function manageGenres()

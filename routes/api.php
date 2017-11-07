@@ -18,7 +18,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 // Search routes
-Route::get('/search', [
-    'as' => 'api.search',
-    'uses' => 'Api\SearchController@search'
-]);
+//Route::get('/search', [
+//    'as' => 'api.search',
+//    'uses' => 'Api\SearchController@search'
+//]);
