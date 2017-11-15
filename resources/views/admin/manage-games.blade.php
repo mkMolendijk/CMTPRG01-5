@@ -13,18 +13,22 @@
                     <span class="glyphicon glyphicon-plus"></span>
                     Add game
                 </button>
-                <h1 class="text-center">Games</h1>
             </div>
         </div>
 
         @include('partials/session-status')
 
-        @include('admin/search-games')
+        {{--@include('admin/search-games')--}}
 
         <div class="row">
             <div class="col-md">
-                <!-- Grid -->
-                @include('admin/games-grid')
+                <div class="card">
+                    <h3 class="card-header">Manage games</h3>
+                    <div class="card-body">
+                        <!-- Grid -->
+                        @include('admin/games-grid')
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md">
                 <div class="card">
-                    <div class="card-header">Manage Genres</div>
+                    <h3 class="card-header">Manage Genres</h3>
                     <div class="card-body">
                         @include('partials/session-status')
                         <table class="table table-hover">
