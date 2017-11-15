@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md">
-                <h1 class="text-center spacing-bottom">Admin Dashboard</h1>
+                <h1 class="text-center spacing-bottom">Admin Panel</h1>
 
                 @include('partials/session-status')
                 <div class="admin-card-container">
