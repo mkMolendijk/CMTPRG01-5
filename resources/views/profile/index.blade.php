@@ -6,13 +6,13 @@
 {{-- TODO: Refactor profile page --}}
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h4>{{Auth::user()->name}}</h4>
-                    </div>
-                    <div class="panel-body">
+        <div class="row spacing-bottom">
+            <div class="col-md">
+                <div class="card">
+                    <h3 class="card-header">
+                        {{Auth::user()->name}}
+                    </h3>
+                    <div class="card-body">
                         <table class="table">
                             <tr>
                                 <td>Name:</td>
@@ -45,27 +45,12 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+            <div class="col-md">
+                <div class="card">
+                    <h3 class="card-header">
                         My Games
-                        <div class="game-controls pull-right">
-                            <div class="btn-group">
-                                <a href="#" id="list" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-th-list"></span>
-                                    List
-                                </a>
-                                <a href="#" id="grid" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                    Grid
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <!-- Table -->
-                    @include('profile/games-list')
-
+                    </h3>
+                    <div class="card-body">
                     <!-- Grid -->
                         @include('profile/games-grid')
                     </div>
@@ -73,21 +58,4 @@
             </div>
         </div>
     </div>
-@endsection
-
-@section('footer')
-    <script>
-        $(document).ready(function () {
-            $('#list').click(function (event) {
-                event.preventDefault();
-                $('#games-list').css('display', 'block');
-                $('#games-flex-grid').css('display', 'none');
-            });
-            $('#grid').click(function (event) {
-                event.preventDefault();
-                $('#games-flex-grid').css('display', 'flex');
-                $('#games-list').css('display', 'none');
-            });
-        });
-    </script>
 @endsection

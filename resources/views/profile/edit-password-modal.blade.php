@@ -6,15 +6,15 @@
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
                 <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Change your password</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Change your password</h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="inputPassword">Password</label>
                         <input type="password" class="form-control" id="inputPassword"
-                               name="inputPassword" placeholder="Password">
+                               name="inputPassword" placeholder="New password">
                     </div>
                 </div>
                 <div class="modal-footer">
