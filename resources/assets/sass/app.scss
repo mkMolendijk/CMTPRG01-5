@@ -16,13 +16,5 @@
 // Welcome page
 @import "welcome/welcome";
 
-// Components
-@import "components/games-grid";
-@import "components/games-list";
-
-// Admin panel
-@import "admin/admin-panel";
-@import "admin/game-detail";
-
-// User dashboard
-@import "dashboard/user-dashboard";
+// Game detail
+@import "components/game-detail";
