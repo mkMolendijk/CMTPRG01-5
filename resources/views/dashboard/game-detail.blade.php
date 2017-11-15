@@ -4,41 +4,36 @@
 
     <div class="container">
         <div class="row spacing-bottom">
-            <div class="col-md-8 col-md-offset-2">
-                <a href="{{ url('/dashboard/') }}" class="btn btn-default">
+            <div class="col-md">
+                <a href="{{ url('/dashboard/') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to dashboard
                 </a>
                 @foreach($gameObj as $game)
                     @if(Auth::user()->id == $game->user_id)
-                        <a href="" class="btn btn-default pull-right" data-toggle="modal" data-target="#editGame">
-                            <span class="glyphicon glyphicon-pencil"></span>
+                        <button href="" class="btn btn-success float-right" data-toggle="modal" data-target="#editGame">
                             Edit game
-                        </a>
+                        </button>
                     @endif
                 @endforeach
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                @include('partials/session-status')
-            </div>
-        </div>
+        @include('partials/session-status')
         <div class="row">
             @foreach($gameObj as $game)
-                <div class="col-md-4 col-md-offset-2">
+                <div class="col-md">
                     <div class="game-img-container spacing-bottom">
                         <img class="game-img" src="{{ $game->image }}" alt="{{ $game->name }}"/>
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md">
                     <div class="game-details">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
+                        <div class="card">
+                            <div class="card-header">
                                 Details
                             </div>
-                            <div class="panel-body">
+                            <div class="card-body">
                                 <h1 class="game-name">{{ $game->title }}</h1>
                                 <strong>
                                     Genre:
