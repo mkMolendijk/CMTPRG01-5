@@ -3,7 +3,7 @@
 @section('title')
     {{Auth::user()->name}}'s profile
 @endsection
-{{-- TODO: Refactor profile page --}}
+
 @section('content')
     <div class="container">
         <div class="row spacing-bottom">

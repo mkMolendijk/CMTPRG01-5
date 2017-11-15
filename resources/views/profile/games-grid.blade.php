@@ -1,7 +1,7 @@
 <div class="card-deck">
     @forelse($games as $game)
         <div class="col-sm-6 col-md-4 spacing-bottom">
-            <div class="card">
+            <div class="card h-100">
                 <img class="card-img-top" src="{{ $game->image }}">
                 <div class="card-body">
                     <h4 class="card-title">{{ $game->title }}</h4>
@@ -19,7 +19,7 @@
                 </div>
             </div>
         </div>
-</div>
 @empty
     <div class="alert alert-danger" role="alert">No games found</div>
 @endforelse
+</div>
