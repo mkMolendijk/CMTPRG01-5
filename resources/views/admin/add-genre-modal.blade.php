@@ -2,9 +2,9 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
+                <h4 class="modal-title" id="addGenreLabel">Add a genre</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
-                <h4 class="modal-title" id="addGenreLabel">Add a genre</h4>
             </div>
             <form role="addGenre" method="POST" action="{{ url('admin/addGenre') }}">
                 {{ method_field('POST') }}

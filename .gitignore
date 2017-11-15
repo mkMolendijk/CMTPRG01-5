@@ -2,6 +2,7 @@
 /config
 /database
 /node_modules
+/public/node_modules
 /public/images
 /public/hot
 /public/storage

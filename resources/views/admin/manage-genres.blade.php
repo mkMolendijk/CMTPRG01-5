@@ -4,23 +4,23 @@
 
     <div class="container">
         <div class="row spacing-bottom">
-            <div class="col-md-8 col-md-offset-2">
-                <a href="{{ url('/admin') }}" class="btn btn-default">
+            <div class="col-md">
+                <a href="{{ url('/admin') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to admin panel
                 </a>
-                <a class="btn btn-success pull-right" data-toggle="modal" data-target="#addGenre">
+                <button class="btn btn-success float-right" data-toggle="modal" data-target="#addGenre">
                     <span class="glyphicon glyphicon-plus"></span>
                     Add genre
-                </a>
+                </button>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Manage Genres</div>
-                    <div class="panel-body">
+            <div class="col-md">
+                <div class="card">
+                    <div class="card-header">Manage Genres</div>
+                    <div class="card-body">
                         @include('partials/session-status')
                         <table class="table table-hover">
                             <thead>

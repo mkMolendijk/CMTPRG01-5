@@ -8,37 +8,37 @@
 
     <div class="container">
         <div class="row spacing-bottom">
-            <div class="col-md-8 col-md-offset-2">
-                <a href="{{ url('/admin/manage-games') }}" class="btn btn-default">
+            <div class="col-md">
+                <a href="{{ url('/admin/manage-games') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to games list
                 </a>
-                <a href="" class="btn btn-default pull-right" data-toggle="modal" data-target="#editGame">
+                <button href="" class="btn btn-success float-right" data-toggle="modal" data-target="#editGame">
                     <span class="glyphicon glyphicon-pencil"></span>
                     Edit game
-                </a>
+                </button>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
+            <div class="col-md">
                 @include('partials/session-status')
             </div>
         </div>
         <div class="row">
             @foreach($gameObj as $game)
-                <div class="col-md-4 col-md-offset-2">
+                <div class="col-md-6">
                     <div class="game-img-container spacing-bottom">
                         <img class="game-img" src="{{ $game->image }}" alt="{{ $game->name }}"/>
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-6">
                     <div class="game-details">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
+                        <div class="card ">
+                            <div class="card-header">
                                 Details
                             </div>
-                            <div class="panel-body">
+                            <div class="card-body">
                                 <h1 class="game-name">{{ $game->title }}</h1>
                                 <strong>
                                     Genre:

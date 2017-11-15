@@ -36,6 +36,7 @@ class AdminController extends Controller
         } else {
             $user->enabled = 1;
         }
+//        $user->enabled = !$user->enabled;
         $user->save();
     }
 

@@ -6,8 +6,8 @@
 
     <div class="container">
         <div class="row spacing-bottom">
-            <div class="col-md-8 col-md-offset-2">
-                <a href="{{ url('/admin') }}" class="btn btn-default">
+            <div class="col-md">
+                <a href="{{ url('/admin') }}" class="btn btn-primary">
                     <span class="glyphicon glyphicon-chevron-left"></span>
                     Return to admin panel
                 </a>
@@ -15,10 +15,10 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Manage Users</div>
-                    <div class="panel-body">
+            <div class="col-md">
+                <div class="card">
+                    <h3 class="card-header">Manage Users</h3>
+                    <div class="card-body">
                         @include('partials/session-status')
                         <table class="table user-table">
                             <thead>
