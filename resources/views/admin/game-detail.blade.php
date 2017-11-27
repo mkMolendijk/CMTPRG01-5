@@ -89,9 +89,22 @@
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
         $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $('input.enabled:checkbox').change(function (e) {
-                $.get('/admin/' + e.target.id + '/gameStatusToggle', null, function (r) {
-                    console.log(r);
+                $.ajax({
+                    url: '/admin/' + e.target.id + '/gameStatusToggle',
+                    dataType : 'json',
+                    type: 'POST',
+                    data: {},
+                    contentType: false,
+                    processData: false,
+                    success:function(response) {
+                        console.log(response);
+                    }
                 });
             });
         });

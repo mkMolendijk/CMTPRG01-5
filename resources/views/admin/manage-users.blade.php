@@ -1,6 +1,7 @@
 @extends('layouts.app')
 @section('head')
-    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 @endsection
 @section('content')
 
@@ -69,8 +70,12 @@
                                         </td>
                                     @endif
                                     <td>
-                                        <input type="checkbox" id="{{$user->id}}" class="enabled" data-toggle="toggle"
-                                               @if($user->enabled)checked @endif >
+                                        <form role="enabledToggle" method="POST" action="{{ url('/admin/{id}/toggleEnabledStatus') }}" enctype="multipart/form-data">
+                                            {{ method_field('POST') }}
+                                            {{ csrf_field() }}                                            <input type="checkbox" id="{{$user->id}}" class="enabled"
+                                                   data-toggle="toggle"
+                                                   @if($user->enabled)checked @endif >
+                                        </form>
 
                                     </td>
                                     <td>
@@ -92,15 +97,36 @@
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script>
         $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
             $('input.enabled:checkbox').change(function (e) {
-                $.get('/admin/' + e.target.id + '/toggleEnabledStatus', null, function (r) {
-                    console.log(r);
+                $.ajax({
+                    url: '/admin/' + e.target.id + '/toggleEnabledStatus',
+                    dataType : 'json',
+                    type: 'POST',
+                    data: {},
+                    contentType: false,
+                    processData: false,
+                    success:function(response) {
+                        console.log(response);
+                    }
                 });
             });
 
             $('input.is-admin:checkbox').change(function (e) {
-                $.get('/admin/' + e.target.id + '/toggleAdminStatus', null, function (r) {
-                    console.log(r);
+                $.ajax({
+                    url: '/admin/' + e.target.id + '/toggleAdminStatus',
+                    dataType : 'json',
+                    type: 'POST',
+                    data: {},
+                    contentType: false,
+                    processData: false,
+                    success:function(response) {
+                        console.log(response);
+                    }
                 });
             });
         });

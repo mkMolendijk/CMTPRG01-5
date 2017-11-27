@@ -28,27 +28,22 @@ class AdminController extends Controller
         return view('admin/manage-users', compact('users'));
     }
 
-    public function toggleEnabledStatus($id)
+    public function toggleEnabledStatus(Request $request, $id)
     {
         $user = User::find($id);
-        if ($user->enabled) {
-            $user->enabled = 0;
-        } else {
-            $user->enabled = 1;
+        if ($request->ajax()) {
+            $user->enabled = !$user->enabled;
+            $user->save();
         }
-//        $user->enabled = !$user->enabled;
-        $user->save();
     }
 
-    public function toggleAdminStatus($id)
+    public function toggleAdminStatus(Request $request, $id)
     {
         $user = User::find($id);
-        if ($user->admin) {
-            $user->admin = 0;
-        } else {
-            $user->admin = 1;
+        if ($request->ajax()) {
+            $user->admin = !$user->admin;
+            $user->save();
         }
-        $user->save();
     }
 
     public function manageGames()
@@ -119,18 +114,16 @@ class AdminController extends Controller
 
         $gameObj->save();
 
-        return redirect('/admin/game-detail/'.$id)->with('message', 'Successfully updated game');
+        return redirect('/admin/game-detail/' . $id)->with('message', 'Successfully updated game');
     }
 
-    public function gameStatusToggle($id)
+    public function gameStatusToggle(Request $request, $id)
     {
         $game = Game::find($id);
-        if ($game->enabled) {
-            $game->enabled = 0;
-        } else {
-            $game->enabled = 1;
+        if ($request->ajax()) {
+            $game->enabled = !$game->enabled;
+            $game->save();
         }
-        $game->save();
     }
 
     public function manageGenres()
