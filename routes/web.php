@@ -42,6 +42,9 @@ Route::group(['middleware' => ['auth', 'admin']], function()
     Route::patch('/admin/editGameDetails/{id}', 'AdminController@editGameDetails');
 });
 
+// Search route
+Route::post('/search', 'SearchController@search');
+
 // User routes
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 Route::get('/dashboard/game-detail/{id}', 'DashboardController@gameDetail');

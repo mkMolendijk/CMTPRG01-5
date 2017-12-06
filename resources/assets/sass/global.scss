@@ -21,3 +21,28 @@
 .user-table .td-centered {
   vertical-align: middle;
 }
+
+// Card exceptions
+// <img>
+
+.card-img-left {
+  margin: -20px 0 -20px -20px;
+  max-width: 20%;
+  float: left;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+// Card img left body
+// <div>
+
+.body-img-left {
+  float: left;
+}
+
+// No text-decoration
+// <a>
+
+.no-decoration{
+  text-decoration: none;
+}

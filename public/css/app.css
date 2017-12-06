@@ -9737,6 +9737,22 @@ a.text-dark:hover {
   vertical-align: middle;
 }
 
+.card-img-left {
+  margin: -20px 0 -20px -20px;
+  max-width: 20%;
+  float: left;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-bottom-left-radius: calc(0.25rem - 1px);
+}
+
+.body-img-left {
+  float: left;
+}
+
+.no-decoration {
+  text-decoration: none;
+}
+
 html,
 body {
   background-color: #fff;
