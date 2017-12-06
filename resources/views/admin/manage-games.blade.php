@@ -18,6 +18,8 @@
 
         @include('partials/session-status')
 
+        @include('partials/search')
+
         {{--@include('admin/search-games')--}}
 
         <div class="row">
