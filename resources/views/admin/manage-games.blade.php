@@ -20,8 +20,6 @@
 
         @include('partials/search')
 
-        {{--@include('admin/search-games')--}}
-
         <div class="row">
             <div class="col-md">
                 <div class="card">
