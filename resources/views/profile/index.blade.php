@@ -6,6 +6,13 @@
 
 @section('content')
     <div class="container">
+
+        <div class="row spacing-bottom">
+            <div class="col-md">
+                @include('partials/back')
+            </div>
+        </div>
+
         <div class="row spacing-bottom">
             <div class="col-md">
                 <div class="card">
@@ -51,7 +58,7 @@
                         My Games
                     </h3>
                     <div class="card-body">
-                    <!-- Grid -->
+                        <!-- Grid -->
                         @include('profile/games-grid')
                     </div>
                 </div>

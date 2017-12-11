@@ -5,10 +5,8 @@
     <div class="container">
         <div class="row spacing-bottom">
             <div class="col-md">
-                <a href="{{ url('/admin') }}" class="btn btn-primary float-left">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    Return to admin panel
-                </a>
+                @include('partials/back')
+
                 <button class="btn btn-success float-right" data-toggle="modal" data-target="#addGame">
                     <span class="glyphicon glyphicon-plus"></span>
                     Add game

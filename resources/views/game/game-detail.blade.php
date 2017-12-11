@@ -5,11 +5,8 @@
     <div class="container">
         <div class="row spacing-bottom">
             <div class="col-md">
-                {{--TODO: Make back button partial--}}
-                {{--<a href="{{ url('/dashboard/') }}" class="btn btn-primary">--}}
-                    {{--<span class="glyphicon glyphicon-chevron-left"></span>--}}
-                    {{--Return to dashboard--}}
-                {{--</a>--}}
+                @include('partials/back')
+
                 @foreach($gameObj as $game)
                     @if(Auth::user()->id == $game->user_id)
                         <button href="" class="btn btn-success float-right" data-toggle="modal" data-target="#editGame">

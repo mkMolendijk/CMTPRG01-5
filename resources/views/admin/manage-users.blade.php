@@ -8,10 +8,8 @@
     <div class="container">
         <div class="row spacing-bottom">
             <div class="col-md">
-                <a href="{{ url('/admin') }}" class="btn btn-primary">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    Return to admin panel
-                </a>
+                @include('partials/back')
+
             </div>
         </div>
 
