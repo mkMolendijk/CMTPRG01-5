@@ -24,7 +24,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <a class="btn btn-primary btn-block" href="{{ url('/admin/game-detail/'.$game->id) }}">View details</a>
+                    <a class="btn btn-primary btn-block" href="{{ url('/game/game-detail/'.$game->id) }}">View details</a>
                 </div>
             </div>
         </div>

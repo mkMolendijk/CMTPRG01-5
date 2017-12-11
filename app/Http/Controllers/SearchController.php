@@ -11,7 +11,7 @@ class SearchController extends Controller
     {
         $searchQuery = $request->searchInput;
 
-        $results = Game::where('title', 'like', '%' . $searchQuery . '%')
+        $results = Game::with('user')->where('title', 'like', '%' . $searchQuery . '%')
             ->orderBy('title')
             ->paginate(20);
 

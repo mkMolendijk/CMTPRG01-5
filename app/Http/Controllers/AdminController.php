@@ -86,18 +86,6 @@ class AdminController extends Controller
         return redirect('/admin/manage-games')->with('message', 'Successfully saved game');
     }
 
-    public function gameDetail($id)
-    {
-        // Get game with id, genre and user
-        $gameObj = Game::with(["genre", "user"])->where('id', '=', $id)->get();
-
-        // Get genres for the edit game modal
-        $genreObj = Genre::all();
-
-        return view('admin/game-detail', compact('gameObj', 'genreObj'));
-
-    }
-
     public function editGameDetails(Request $request, $id)
     {
         $gameObj = Game::find($id);

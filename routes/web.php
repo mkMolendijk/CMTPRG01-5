@@ -55,6 +55,9 @@ Route::patch('/dashboard/editGameDetails/{id}', 'DashboardController@editGameDet
 // Dashboard page, add game
 Route::post('/dashboard/addGame', 'DashboardController@addGame');
 
+// Game detail
+Route::get('/game/game-detail/{id}', 'GameController@showDetails');
+
 // Profile page route
 Route::get('/profile', 'ProfileController@index');
 

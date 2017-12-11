@@ -10,15 +10,16 @@
                 </button>
             </div>
         </div>
-    @include('partials/session-status')
+        @include('partials/session-status')
 
-    {{--@include('dashboard/search-games')--}}
+        @include('partials/search')
+
         <div class="row">
             <div class="col-md">
                 <div class="card">
                     <h3 class="card-header">All games</h3>
                     <div class="card-body">
-                    <!-- Grid -->
+                        <!-- Grid -->
                         @include('dashboard/games-grid')
                     </div>
                 </div>

@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-md">
                 @foreach($results as $result)
-                    <a class="no-decoration" href="{{ url('/admin/game-detail/'.$result->id) }}">
+                    <a class="no-decoration" href="{{ url('/game/game-detail/'.$result->id) }}">
                     <div class="card spacing-bottom">
                         <div class="card-body">
                             <img src="{{ $result->image }}" alt="{{ $result->title }}" class="card-img-left">
