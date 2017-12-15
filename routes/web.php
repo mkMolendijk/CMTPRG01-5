@@ -25,7 +25,6 @@ Route::group(['middleware' => ['auth', 'admin']], function()
     Route::get('/admin/manage-users', 'AdminController@manageUsers');
     Route::get('/admin/manage-games', 'AdminController@manageGames');
     Route::get('/admin/manage-genres', 'AdminController@manageGenres');
-    Route::get('/admin/game-detail/{id}', 'AdminController@gameDetail');
 
     // User status routes
     Route::post('/admin/{id}/toggleEnabledStatus', 'AdminController@toggleEnabledStatus');
@@ -47,7 +46,6 @@ Route::post('/search', 'SearchController@search');
 
 // User routes
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/dashboard/game-detail/{id}', 'DashboardController@gameDetail');
 
 // Edit game route
 Route::patch('/dashboard/editGameDetails/{id}', 'DashboardController@editGameDetails');
@@ -55,7 +53,7 @@ Route::patch('/dashboard/editGameDetails/{id}', 'DashboardController@editGameDet
 // Dashboard page, add game
 Route::post('/dashboard/addGame', 'DashboardController@addGame');
 
-// Game detail
+// Game routes
 Route::get('/game/game-detail/{id}', 'GameController@showDetails');
 
 // Profile page route
