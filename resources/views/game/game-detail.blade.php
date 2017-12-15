@@ -1,5 +1,11 @@
 @extends('layouts.app')
 
+@section('head')
+    @if($admin == true)
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    @endif
+@endsection
+
 @section('content')
 
     <div class="container">
@@ -78,29 +84,29 @@
 @endsection
 
 @section('footer')
-@if ($admin == true)
-    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $('input.enabled:checkbox').change(function (e) {
-                $.ajax({
-                    url: '/admin/' + e.target.id + '/gameStatusToggle',
-                    dataType: 'json',
-                    type: 'POST',
-                    data: {},
-                    contentType: false,
-                    processData: false,
-                    success: function (response) {
-                        console.log(response);
+    @if ($admin == true)
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     }
                 });
+                $('input.enabled:checkbox').change(function (e) {
+                    $.ajax({
+                        url: '/admin/' + e.target.id + '/gameStatusToggle',
+                        dataType: 'json',
+                        type: 'POST',
+                        data: {},
+                        contentType: false,
+                        processData: false,
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                });
             });
-        });
-    </script>
-@endif
+        </script>
+    @endif
 @endsection
