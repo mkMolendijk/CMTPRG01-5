@@ -7,13 +7,11 @@
             <div class="col-md">
                 @include('partials/back')
 
-                @foreach($gameObj as $game)
-                    @if(Auth::user()->id == $game->user_id)
-                        <button href="" class="btn btn-success float-right" data-toggle="modal" data-target="#editGame">
-                            Edit game
-                        </button>
-                    @endif
-                @endforeach
+                @if($uploader == true)
+                    <button href="" class="btn btn-success float-right" data-toggle="modal" data-target="#editGame">
+                        Edit game
+                    </button>
+                @endif
             </div>
         </div>
         @include('partials/session-status')
@@ -63,6 +61,12 @@
                                 <p class="created-at">
                                     {{ $game->created_at }}
                                 </p>
+                                @if ($admin == true)
+                                    <div class="enabled-status">
+                                        <input type="checkbox" id="{{$game->id}}" class="enabled" data-toggle="toggle"
+                                               @if($game->enabled)checked @endif >
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -71,4 +75,32 @@
         </div>
     </div>
     @include('dashboard/edit-game-details')
+@endsection
+
+@section('footer')
+@if ($admin == true)
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('input.enabled:checkbox').change(function (e) {
+                $.ajax({
+                    url: '/admin/' + e.target.id + '/gameStatusToggle',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {},
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+            });
+        });
+    </script>
+@endif
 @endsection
