@@ -55,7 +55,7 @@ Route::post('/dashboard/addGame', 'DashboardController@addGame');
 
 // Game routes
 Route::get('/game/game-detail/{id}', 'GameController@showDetails');
-
+Route::get('game/like/{id}', 'GameController@likes');
 // Profile page route
 Route::get('/profile', 'ProfileController@index');
 

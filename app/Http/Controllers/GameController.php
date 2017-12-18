@@ -37,4 +37,8 @@ class GameController extends Controller
         return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin'));
 
     }
+
+    public function likes($id) {
+
+    }
 }
