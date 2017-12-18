@@ -7,8 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Game extends Model
 {
-//    use Searchable;
-
     protected $fillable = array('title', 'image', 'genre_id', 'rating', 'description');
 
     public function user() {
@@ -19,4 +17,7 @@ class Game extends Model
         return $this->belongsTo(Genre::class);
     }
 
+    public function hasLikes() {
+        return $this->hasMany(User::class);
+    }
 }

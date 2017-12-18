@@ -44,12 +44,6 @@
                                     {{ $game->genre->title }}
                                 </p>
                                 <strong>
-                                    Rating:
-                                </strong>
-                                <p class="game-rating">
-                                    {{ $game->rating }}/5
-                                </p>
-                                <strong>
                                     Description:
                                 </strong>
                                 <p class="game-desc">
@@ -67,12 +61,23 @@
                                 <p class="created-at">
                                     {{ $game->created_at }}
                                 </p>
+                                <strong>
+                                    Likes:
+                                </strong>
+                                <p class="likes">
+                                    Likes int hier
+                                </p>
                                 @if ($admin == true)
-                                    <div class="enabled-status">
+                                    <div class="enabled-status float-left">
                                         <input type="checkbox" id="{{$game->id}}" class="enabled" data-toggle="toggle"
                                                @if($game->enabled)checked @endif >
                                     </div>
                                 @endif
+                                <div class="like-btn float-left spacing-left">
+                                    <a href="" class="btn btn-primary">
+                                        Like!
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
