@@ -32,6 +32,6 @@ class User extends Authenticatable
     }
 
     public function likes() {
-        return $this->hasMany(Game::class);
+        return $this->belongsToMany(Game::class, 'likes');
     }
 }

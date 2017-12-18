@@ -68,15 +68,17 @@
                                     Likes int hier
                                 </p>
                                 @if ($admin == true)
-                                    <div class="enabled-status float-left">
+                                    <div class="enabled-status">
                                         <input type="checkbox" id="{{$game->id}}" class="enabled" data-toggle="toggle"
                                                @if($game->enabled)checked @endif >
                                     </div>
                                 @endif
-                                <div class="like-btn float-left spacing-left">
-                                    <a href="" class="btn btn-primary">
-                                        Like!
-                                    </a>
+                            </div>
+                            <div class="card-footer">
+                                <div class="like-btn">
+                                    <button id="like" value="{{ Auth::user()->id }}" data-game="{{ $game->id }}" class="btn btn-primary">
+                                        Like
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -111,6 +113,25 @@
                         }
                     });
                 });
+
+                $('#like').click(function (e) {
+                    e.preventDefault();
+                    var g = $(this).attr("data-game");
+
+                    $.ajax({
+                        url: '/game/likes',
+                        dataType: 'json',
+                        type: 'POST',
+                        data: {
+                            user_id: e.target.value,
+                            game_id: g
+                        },
+                        success: function (response) {
+                            console.log(response);
+                        }
+                    });
+                });
+
             });
         </script>
     @endif

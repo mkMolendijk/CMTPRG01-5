@@ -34,11 +34,23 @@ class GameController extends Controller
             $admin = true;
         }
 
+        // Get likes
+        $gameObj->likedBy();
+
         return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin'));
 
     }
 
-    public function likes($id) {
+    public function likes(Request $request)
+    {
+        if ($request->ajax()) {
+            $gameId = $request->game_id;
+            $game = Game::find($gameId);
+            $userId = $request->user_id;
 
+            $game->likedBy()->sync($userId);
+
+            return $request;
+        }
     }
 }

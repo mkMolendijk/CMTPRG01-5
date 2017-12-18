@@ -17,7 +17,7 @@ class Game extends Model
         return $this->belongsTo(Genre::class);
     }
 
-    public function hasLikes() {
-        return $this->hasMany(User::class);
+    public function likedBy() {
+        return $this->belongsToMany(User::class, 'likes');
     }
 }
