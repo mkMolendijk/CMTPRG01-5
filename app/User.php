@@ -32,6 +32,6 @@ class User extends Authenticatable
     }
 
     public function likes() {
-        return $this->belongsToMany(Game::class, 'likes');
+        return $this->belongsToMany(Game::class, 'likes')->withPivot('game_id');
     }
 }

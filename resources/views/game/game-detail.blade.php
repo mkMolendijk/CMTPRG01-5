@@ -65,7 +65,7 @@
                                     Likes:
                                 </strong>
                                 <p class="likes">
-                                    Likes int hier
+                                    {{ $likesNum }}
                                 </p>
                                 @if ($admin == true)
                                     <div class="enabled-status">
@@ -76,7 +76,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="like-btn">
-                                    <button id="like" value="{{ Auth::user()->id }}" data-game="{{ $game->id }}" class="btn btn-primary">
+                                    <button id="like" data-user="{{ Auth::user()->id }}" data-game="{{ $game->id }}" class="btn btn-primary">
                                         Like
                                     </button>
                                 </div>
@@ -113,26 +113,35 @@
                         }
                     });
                 });
-
-                $('#like').click(function (e) {
-                    e.preventDefault();
-                    var g = $(this).attr("data-game");
-
-                    $.ajax({
-                        url: '/game/likes',
-                        dataType: 'json',
-                        type: 'POST',
-                        data: {
-                            user_id: e.target.value,
-                            game_id: g
-                        },
-                        success: function (response) {
-                            console.log(response);
-                        }
-                    });
-                });
-
             });
         </script>
     @endif
+    <script>
+        $(document).ready(function () {
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $('#like').click(function (e) {
+                e.preventDefault();
+                let g = $(this).attr('data-game');
+                let u = $(this).attr('data-user');
+
+                $.ajax({
+                    url: '/game/likes',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {
+                        user_id: u,
+                        game_id: g
+                    },
+                    success: function (response) {
+                        console.log(response);
+                    }
+                });
+            });
+        });
+
+    </script>
 @endsection

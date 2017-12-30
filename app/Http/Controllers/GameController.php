@@ -12,7 +12,7 @@ class GameController extends Controller
     public function showDetails($id)
     {
         // Get game with id, genre and user
-        $gameObj = Game::with(["genre", "user"])->where('id', '=', $id)->get();
+        $gameObj = Game::with(["genre", "user", "likedBy"])->where('id', '=', $id)->get();
 
         // Get genres for the edit game modal
         $genreObj = Genre::all();
@@ -35,9 +35,12 @@ class GameController extends Controller
         }
 
         // Get likes
-        $gameObj->likedBy();
+        foreach ($gameObj as $game) {
+            $likesNum = $game->likedBy->count();
+            
+        }
 
-        return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin'));
+        return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin', 'likesNum'));
 
     }
 
@@ -48,9 +51,10 @@ class GameController extends Controller
             $game = Game::find($gameId);
             $userId = $request->user_id;
 
-            $game->likedBy()->sync($userId);
+            $game->likedBy()->attach($userId);
 
             return $request;
         }
+        return $request;
     }
 }

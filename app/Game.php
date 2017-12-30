@@ -18,6 +18,6 @@ class Game extends Model
     }
 
     public function likedBy() {
-        return $this->belongsToMany(User::class, 'likes');
+        return $this->belongsToMany(User::class, 'likes')->withPivot('user_id');
     }
 }
