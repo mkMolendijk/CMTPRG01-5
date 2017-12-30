@@ -44,10 +44,13 @@ class GameController extends Controller
         }
 
         // Check if user liked this game
-        if (in_array(Auth::user()->id, $userID)) {
-            $liked = true;
-        } else {
-            $liked = false;
+        $liked = null;
+        if (!empty($userID)) {
+            if (in_array(Auth::user()->id, $userID)) {
+                $liked = true;
+            } else {
+                $liked = false;
+            }
         }
 
         return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin', 'likesNum', 'liked'));

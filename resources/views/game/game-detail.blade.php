@@ -81,12 +81,13 @@
                             <div class="card-footer">
                                 <div class="like-btn">
                                     @if (!$liked)
-                                    <button id="like" data-user="{{ Auth::user()->id }}" data-game="{{ $game->id }}"
-                                            class="btn btn-primary">
-                                        Like
-                                    </button>
-                                        @else
-                                        <button id="unlike" data-user="{{ Auth::user()->id }}" data-game="{{ $game->id }}"
+                                        <button id="like" data-user="{{ Auth::user()->id }}" data-game="{{ $game->id }}"
+                                                class="btn btn-primary">
+                                            Like
+                                        </button>
+                                    @else
+                                        <button id="unlike" data-user="{{ Auth::user()->id }}"
+                                                data-game="{{ $game->id }}"
                                                 class="btn btn-primary disabled">
                                             Liked
                                         </button>
