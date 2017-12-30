@@ -37,14 +37,24 @@ class GameController extends Controller
         // Get likes
         foreach ($gameObj as $game) {
             $likesNum = $game->likedBy->count();
-            
+
+            foreach ($game->likedBy as $usersLiked) {
+                $userID[] = $usersLiked->id;
+            }
         }
 
-        return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin', 'likesNum'));
+        // Check if user liked this game
+        if (in_array(Auth::user()->id, $userID)) {
+            $liked = true;
+        } else {
+            $liked = false;
+        }
+
+        return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin', 'likesNum', 'liked'));
 
     }
 
-    public function likes(Request $request)
+    public function like(Request $request)
     {
         if ($request->ajax()) {
             $gameId = $request->game_id;
@@ -52,8 +62,18 @@ class GameController extends Controller
             $userId = $request->user_id;
 
             $game->likedBy()->attach($userId);
+        }
+        return $request;
+    }
 
-            return $request;
+    public function unlike(Request $request)
+    {
+        if ($request->ajax()) {
+            $gameId = $request->game_id;
+            $game = Game::find($gameId);
+            $userId = $request->user_id;
+
+            $game->likedBy()->detach($userId);
         }
         return $request;
     }

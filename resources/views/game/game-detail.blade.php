@@ -65,7 +65,11 @@
                                     Likes:
                                 </strong>
                                 <p class="likes">
-                                    {{ $likesNum }}
+                                    @if(!empty($likesNum))
+                                        {{ $likesNum }}
+                                    @else
+                                        0
+                                    @endif
                                 </p>
                                 @if ($admin == true)
                                     <div class="enabled-status">
@@ -76,9 +80,17 @@
                             </div>
                             <div class="card-footer">
                                 <div class="like-btn">
-                                    <button id="like" data-user="{{ Auth::user()->id }}" data-game="{{ $game->id }}" class="btn btn-primary">
+                                    @if (!$liked)
+                                    <button id="like" data-user="{{ Auth::user()->id }}" data-game="{{ $game->id }}"
+                                            class="btn btn-primary">
                                         Like
                                     </button>
+                                        @else
+                                        <button id="unlike" data-user="{{ Auth::user()->id }}" data-game="{{ $game->id }}"
+                                                class="btn btn-primary disabled">
+                                            Liked
+                                        </button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -123,13 +135,14 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
             $('#like').click(function (e) {
                 e.preventDefault();
                 let g = $(this).attr('data-game');
                 let u = $(this).attr('data-user');
 
                 $.ajax({
-                    url: '/game/likes',
+                    url: '/game/like',
                     dataType: 'json',
                     type: 'POST',
                     data: {
@@ -138,6 +151,27 @@
                     },
                     success: function (response) {
                         console.log(response);
+                        window.location.reload();
+                    }
+                });
+            });
+
+            $('#unlike').click(function (e) {
+                e.preventDefault();
+                let g = $(this).attr('data-game');
+                let u = $(this).attr('data-user');
+
+                $.ajax({
+                    url: '/game/unlike',
+                    dataType: 'json',
+                    type: 'POST',
+                    data: {
+                        user_id: u,
+                        game_id: g
+                    },
+                    success: function (response) {
+                        console.log(response);
+                        window.location.reload();
                     }
                 });
             });
