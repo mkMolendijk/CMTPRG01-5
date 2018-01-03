@@ -50,8 +50,6 @@ class DashboardController extends Controller
         $genreId = Genre::where('title', '=', $genreTitle)->value('id');
         $game->genre_id = $genreId;
 
-        $game->rating = $request->gameRating;
-
         $game->description = $request->gameDesc;
 
         $game->user_id = Auth::user()->id;
@@ -81,9 +79,7 @@ class DashboardController extends Controller
         $genreTitle = $request->gameGenre;
         $genreId = Genre::where('title', '=', $genreTitle)->value('id');
         $gameObj->genre_id = $genreId;
-
-        $gameObj->rating = $request->gameRating;
-
+        
         $gameObj->description = $request->gameDesc;
 
         $gameObj->save();
