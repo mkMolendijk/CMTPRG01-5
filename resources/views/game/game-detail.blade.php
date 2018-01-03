@@ -13,7 +13,7 @@
             <div class="col-md">
                 @include('partials/back')
 
-                @if($uploader == true)
+                @if($uploader == true || $admin == true)
                     <button href="" class="btn btn-success float-right" data-toggle="modal" data-target="#editGame">
                         Edit game
                     </button>
@@ -100,7 +100,7 @@
             @endforeach
         </div>
     </div>
-    @include('dashboard/edit-game-details')
+    @include('game/edit-game-details')
 @endsection
 
 @section('footer')

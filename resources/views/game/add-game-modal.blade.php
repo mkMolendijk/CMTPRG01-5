@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form role="addGame" method="POST" action="{{ url('dashboard/addGame') }}" enctype="multipart/form-data">
+            <form role="addGame" method="POST" action="{{ url('game/add-game') }}" enctype="multipart/form-data">
                 {{ method_field('POST') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
@@ -29,33 +29,13 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="gameRating">Enter your rating:</label>
-                        <div class="form-group">
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="1"> 1
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="2"> 2
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="3"> 3
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="4"> 4
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="5"> 5
-                            </label>
-                        </div>
-                    </div>
-                    <div class="form-group">
                         <label for="gameDesc">Enter description (optional)</label>
                         <textarea class="form-control" id="gameDesc" name="gameDesc" rows="3"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
                 </div>
             </form>
         </div>

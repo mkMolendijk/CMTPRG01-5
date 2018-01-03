@@ -6,7 +6,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form role="editGameDetails" method="POST" action="{{ url('admin/editGameDetails/'. $game->id) }}"
+            <form role="editGameDetails" method="POST" action="{{ url('game/edit-game-details/'. $game->id) }}"
                   enctype="multipart/form-data">
                 {{ method_field('PATCH') }}
                 {{ csrf_field() }}
@@ -23,26 +23,6 @@
                                 <option>{{ $option->title }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="gameRating">Edit your rating:</label>
-                        <div class="form-group">
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="1"> 1
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="2"> 2
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="3"> 3
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="4"> 4
-                            </label>
-                            <label class="radio-inline">
-                                <input type="radio" name="gameRating" id="gameRating" value="5"> 5
-                            </label>
-                        </div>
                     </div>
                     <div class="form-group">
                         <label for="gameDesc">Edit description</label>

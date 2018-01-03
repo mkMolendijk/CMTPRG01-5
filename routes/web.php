@@ -35,10 +35,6 @@ Route::group(['middleware' => ['auth', 'admin']], function()
 
     // POST routes
     Route::post('/admin/addGenre', 'AdminController@addGenre');
-    Route::post('/admin/addGame', 'AdminController@addGame');
-
-    // Edit game route
-    Route::patch('/admin/editGameDetails/{id}', 'AdminController@editGameDetails');
 });
 
 // Search route
@@ -47,20 +43,15 @@ Route::post('/search', 'SearchController@search');
 // User routes
 Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
 
-// Edit game route
-Route::patch('/dashboard/editGameDetails/{id}', 'DashboardController@editGameDetails');
-
-// Dashboard page, add game
-Route::post('/dashboard/addGame', 'DashboardController@addGame');
-
 // Game routes
 Route::get('/game/game-detail/{id}', 'GameController@showDetails');
+Route::patch('/game/edit-game-details/{id}', 'GameController@editGameDetails');
+Route::post('/game/add-game', 'GameController@addGame');
 Route::post('game/like','GameController@like');
 Route::post('game/unlike','GameController@unlike');
 
 // Profile page route
 Route::get('/profile', 'ProfileController@index');
-
 // Profile edit routes
 Route::patch('/profile/updateName', 'ProfileController@updateName');
 Route::patch('/profile/updateEmail', 'ProfileController@updateEmail');

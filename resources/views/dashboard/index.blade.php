@@ -27,6 +27,6 @@
         </div>
     </div>
 
-    @include('dashboard/add-game-modal')
+    @include('game/add-game-modal')
 
 @endsection

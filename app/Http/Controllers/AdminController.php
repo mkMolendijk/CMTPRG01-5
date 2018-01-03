@@ -57,50 +57,6 @@ class AdminController extends Controller
         return view('admin/manage-games', compact('games', 'genre'));
     }
 
-    public function addGame(Request $request)
-    {
-        $game = new Game;
-
-        $game->title = $request->gameTitle;
-
-        $fileName = $request->gameImg->getClientOriginalName();
-        $fileImg = $request->gameImg;
-        $gameImgPath = public_path() . '/images/';
-
-        $fileImg->move($gameImgPath, $fileName);
-
-        $game->image = '/images/' . $fileName;
-
-        $genreTitle = $request->gameGenre;
-        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
-        $game->genre_id = $genreId;
-
-        $game->description = $request->gameDesc;
-
-        $game->user_id = Auth::user()->id;
-
-        $game->save();
-
-        return redirect('/admin/manage-games')->with('message', 'Successfully saved game');
-    }
-
-    public function editGameDetails(Request $request, $id)
-    {
-        $gameObj = Game::find($id);
-
-        $gameObj->title = $request->gameTitle;
-
-        $genreTitle = $request->gameGenre;
-        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
-        $gameObj->genre_id = $genreId;
-
-        $gameObj->description = $request->gameDesc;
-
-        $gameObj->save();
-
-        return redirect('/admin/game-detail/' . $id)->with('message', 'Successfully updated game');
-    }
-
     public function gameStatusToggle(Request $request, $id)
     {
         $game = Game::find($id);

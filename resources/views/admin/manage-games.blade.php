@@ -31,6 +31,6 @@
         </div>
     </div>
 
-    @include('admin/add-game-modal')
+    @include('game/add-game-modal')
 
 @endsection
