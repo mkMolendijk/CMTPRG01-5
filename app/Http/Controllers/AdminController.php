@@ -25,7 +25,7 @@ class AdminController extends Controller
         // Get all users except logged in user
         $users = User::all()->except(Auth::id());
 
-        return view('admin/manage-users', compact('users'));
+        return view('admin/users', compact('users'));
     }
 
     public function toggleEnabledStatus(Request $request, $id)
@@ -54,7 +54,7 @@ class AdminController extends Controller
         // Get genres for the add game modal
         $genre = Genre::all();
 
-        return view('admin/manage-games', compact('games', 'genre'));
+        return view('admin/games', compact('games', 'genre'));
     }
 
     public function gameStatusToggle(Request $request, $id)
@@ -71,7 +71,7 @@ class AdminController extends Controller
         // Get all the genres
         $genres = Genre::all();
 
-        return view('admin/manage-genres', compact('genres'));
+        return view('admin/genres', compact('genres'));
     }
 
     public function addGenre(Request $request)

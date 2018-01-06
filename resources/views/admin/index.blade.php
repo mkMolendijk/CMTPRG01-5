@@ -14,7 +14,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Manage users</h4>
                                     <p class="card-text">List all users</p>
-                                    <a class="btn btn-primary" href="{{ url('/admin/manage-users') }}">Manage users</a>
+                                    <a class="btn btn-primary" href="{{ url('/admin/users') }}">Manage users</a>
                                 </div>
                             </div>
                         </div>
@@ -23,7 +23,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Manage games</h4>
                                     <p class="card-text">List all games</p>
-                                    <a class="btn btn-primary" href="{{ url('/admin/manage-games') }}">Manage games</a>
+                                    <a class="btn btn-primary" href="{{ url('/admin/games') }}">Manage games</a>
                                 </div>
                             </div>
                         </div>
@@ -32,7 +32,7 @@
                                 <div class="card-body">
                                     <h4 class="card-title">Manage genres</h4>
                                     <p class="card-title">List all genres</p>
-                                    <a class="btn btn-primary" href="{{ url('/admin/manage-genres') }}">Manage genres</a>
+                                    <a class="btn btn-primary" href="{{ url('/admin/genres') }}">Manage genres</a>
                                 </div>
                             </div>
                         </div>

@@ -15,29 +15,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light spacing-bottom">
-    <a class="navbar-brand" href="#">Mark Molendijk</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
-            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-        @if (Route::has('login'))
-            <div class="navbar-nav">
-                @auth
-                    @if (Auth::user()['admin'])
-                        <a class="nav-item nav-link" href="{{ url('/admin') }}">Admin panel</a>
-                    @else
-                        <a class="nav-item nav-link" href="{{ url('/dashboard') }}">Dashboard</a>
-                    @endif
-                    @else
-                        <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
-                        <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
-                    @endauth
-            </div>
-        @endif
-    </div>
-</nav>
+@include('partials/navbar')
 
 <div class="jumbotron">
     <div class="container-fluid">
