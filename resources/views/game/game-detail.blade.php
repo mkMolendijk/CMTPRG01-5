@@ -14,7 +14,7 @@
                 @include('partials/back')
 
                 @if($uploader == true || $admin == true)
-                    <button href="" class="btn btn-success float-right" data-toggle="modal" data-target="#editGame">
+                    <button href="" class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editGame">
                         Edit game
                     </button>
                 @endif

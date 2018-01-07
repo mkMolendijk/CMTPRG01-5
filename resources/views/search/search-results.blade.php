@@ -4,6 +4,12 @@
     <div class="container">
         <div class="row spacing-bottom">
             <div class="col-md">
+                @include('partials/back')
+            </div>
+        </div>
+
+        <div class="row spacing-bottom">
+            <div class="col-md">
                 <div class="card">
                     <div class="card-body">
                         <p class="lead">
@@ -13,6 +19,8 @@
                 </div>
             </div>
         </div>
+
+        @include('partials/session-status')
 
         <div class="row">
             <div class="col-md">

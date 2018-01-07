@@ -1,6 +1,6 @@
 <div class="card-deck">
     @foreach($games as $game)
-        <div class="col-sm-6 col-md-4 spacing-bottom">
+        <div class="col-md-6 col-lg-4 spacing-bottom">
             <div class="card h-100">
                 <img class="card-img-top" src="{{ $game->image }}">
                 <div class="card-body">

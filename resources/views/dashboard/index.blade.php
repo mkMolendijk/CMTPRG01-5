@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md">
-                <button type="button" class="btn btn-success float-right spacing-bottom" data-toggle="modal"
+                <button type="button" class="btn btn-outline-success float-right spacing-bottom" data-toggle="modal"
                         data-target="#addGame">
                     Add game
                 </button>

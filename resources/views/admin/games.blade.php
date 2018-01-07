@@ -7,8 +7,7 @@
             <div class="col-md">
                 @include('partials/back')
 
-                <button class="btn btn-success float-right" data-toggle="modal" data-target="#addGame">
-                    <span class="glyphicon glyphicon-plus"></span>
+                <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#addGame">
                     Add game
                 </button>
             </div>

@@ -9,7 +9,6 @@
         <div class="row spacing-bottom">
             <div class="col-md">
                 @include('partials/back')
-
             </div>
         </div>
 

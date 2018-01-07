@@ -17,7 +17,7 @@
             <div class="col-md">
                 <div class="card">
                     <h3 class="card-header">
-                        {{Auth::user()->name}}
+                        My Details
                     </h3>
                     <div class="card-body">
                         <table class="table">
