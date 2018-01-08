@@ -9,13 +9,7 @@
                     <p class="card-text">{{ $game->description }}</p>
                 </div>
                 <div class="card-footer">
-                    @if ($game->user->admin === 1)
-                        <a class="btn btn-primary btn-block" href="{{ url('/admin/game-detail/'.$game->id) }}">View
-                            details</a>
-                    @else
-                        <a class="btn btn-primary btn-block" href="{{ url('/dashboard/game-detail/'.$game->id) }}">View
-                            details</a>
-                    @endif
+                    <a class="btn btn-primary btn-block" href="{{ url('/game/game-detail/'.$game->id) }}">View details</a>
                 </div>
             </div>
         </div>
