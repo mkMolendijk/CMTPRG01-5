@@ -17,7 +17,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Admin routes
+// Admin route group
 Route::group(['middleware' => ['auth', 'admin']], function () {
     // View routes
     Route::get('/admin', 'AdminController@index')->name('admin');
@@ -36,6 +36,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::post('/admin/addGenre', 'AdminController@addGenre');
 });
 
+// User route group
 Route::group(['middleware' => ['auth', 'user']], function () {
     // User routes
     Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
