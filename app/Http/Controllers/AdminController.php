@@ -86,6 +86,18 @@ class AdminController extends Controller
         $genre->save();
 
         // Redirect with success message
-        return redirect('/admin/manage-genres')->with('message', 'Successfully saved genre');
+        return redirect('/admin/genres')->with('message', 'Successfully saved genre');
+    }
+
+    public function removeGenre(Request $request)
+    {
+        // Fetch genre
+        $genreId = $request->genreId;
+
+        // Remove genre from DB
+        Genre::find($genreId)->delete();
+
+        // Redirect back
+        return redirect('/admin/genres')->with('message', 'Successfully deleted genre');
     }
 }

@@ -12,7 +12,7 @@ class SearchController extends Controller
         if ($request->filled('searchInput')) {
             $searchQuery = $request->searchInput;
 
-            $results = Game::with('user')->where('title', 'like', '%' . $searchQuery . '%')
+            $results = Game::with('user', 'genre')->where('title', 'like', '%' . $searchQuery . '%')
                 ->orderBy('title')
                 ->paginate(10);
 

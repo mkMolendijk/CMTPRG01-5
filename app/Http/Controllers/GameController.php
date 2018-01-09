@@ -81,8 +81,8 @@ class GameController extends Controller
 
         $game->save();
 
-        if (Auth::user()->admin === true) {
-            return redirect('/admin/manage-games')->with('message', 'Successfully saved game');
+        if (Auth::user()->admin == true) {
+            return redirect('/admin/games')->with('message', 'Successfully saved game');
         } else {
             return redirect('/dashboard/')->with('message', 'Successfully saved game');
         }

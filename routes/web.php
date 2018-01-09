@@ -32,8 +32,9 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     // Game status route
     Route::post('/admin/{id}/gameStatusToggle', 'AdminController@gameStatusToggle');
 
-    // Add genre route
-    Route::post('/admin/addGenre', 'AdminController@addGenre');
+    //Genre routes
+    Route::post('/admin/add-genre', 'AdminController@addGenre');
+    Route::post('/admin/remove-genre', 'AdminController@removeGenre');
 });
 
 // User route group

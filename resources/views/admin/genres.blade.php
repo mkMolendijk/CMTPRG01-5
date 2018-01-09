@@ -31,11 +31,37 @@
                                     Name
                                 </strong>
                             </td>
+                            <td></td>
+                            <td></td>
                             </thead>
                             @foreach($genres as $genre)
                                 <tr>
-                                    <td>{{ $genre->id }}</td>
-                                    <td>{{ $genre->title }}</td>
+                                    <td>
+                                        {{ $genre->id }}
+                                    </td>
+                                    <td>
+                                        {{ $genre->title }}
+                                    </td>
+                                    <td>
+                                        <form role="removeGenre" method="POST" action="{{ '/admin/remove-genre' }}">
+                                            {{ method_field('POST') }}
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="genreId" value="{{ $genre->id }}">
+                                            <button class="btn btn-outline-danger">
+                                                Remove
+                                            </button>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form role="editGenre" method="PATCH" action="{{ 'admin/edit-genre' }}">
+                                            {{ method_field('PATCH') }}
+                                            {{ csrf_field() }}
+                                            <input type="hidden" name="genreId" value="{{ $genre->id }}">
+                                            <button class="btn btn-outline-success">
+                                                Edit
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>
@@ -45,6 +71,7 @@
         </div>
     </div>
 
-@include('admin/add-genre-modal')
+    @include('admin/add-genre-modal')
+    @include('admin/edit-genre-modal')
 
 @endsection

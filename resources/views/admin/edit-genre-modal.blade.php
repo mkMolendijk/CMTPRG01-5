@@ -6,13 +6,13 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form role="addGenre" method="POST" action="{{ url('admin/add-genre') }}">
-                {{ method_field('POST') }}
+            <form role="addGenre" method="PATCH" action="{{ url('admin/edit-genre') }}">
+                {{ method_field('PATCH') }}
                 {{ csrf_field() }}
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="genreTitle">Enter a genre:</label>
+                        <label for="genreTitle">Edit genre:</label>
                         <input type="text" class="form-control" id="genreTitle" name="genreTitle" placeholder="Genre title">
                     </div>
                 </div>
