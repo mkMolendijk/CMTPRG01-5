@@ -15,6 +15,12 @@
 
         <div class="row spacing-bottom">
             <div class="col-md">
+                @include('partials/session-status')
+            </div>
+        </div>
+
+        <div class="row spacing-bottom">
+            <div class="col-md">
                 <div class="card">
                     <h3 class="card-header">
                         My Details
