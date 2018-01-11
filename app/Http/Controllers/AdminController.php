@@ -104,7 +104,7 @@ class AdminController extends Controller
             // Save new input data int db
             $genreObj->save();
             // Redirect with success message
-            return redirect(' / admin / genres')->with('message', 'Successfully update genre');
+            return redirect(' /admin/genres')->with('message', 'Successfully update genre');
         } else {
             return redirect()->back()->with('error', 'Fill in a value');
         }
@@ -119,6 +119,6 @@ class AdminController extends Controller
         Genre::find($genreId)->delete();
 
         // Redirect back
-        return redirect(' / admin / genres')->with('message', 'Successfully deleted genre');
+        return redirect(' /admin/genres')->with('message', 'Successfully deleted genre');
     }
 }

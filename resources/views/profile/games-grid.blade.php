@@ -1,5 +1,5 @@
 <div class="card-deck">
-    @forelse($games as $game)
+    @forelse($gameObj as $game)
         <div class="col-sm-6 col-md-6 col-lg-4 spacing-bottom">
             <div class="card h-100">
                 <img class="card-img-top" src="{{ $game->image }}">

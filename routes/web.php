@@ -56,6 +56,6 @@ Route::post('game/unlike', 'GameController@unlike');
 
 // Profile routes
 Route::get('/profile', 'ProfileController@index');
-Route::patch('/profile/updateName', 'ProfileController@updateName');
-Route::patch('/profile/updateEmail', 'ProfileController@updateEmail');
+Route::post('/profile/update-name', 'ProfileController@updateName');
+Route::post('/profile/update-email', 'ProfileController@updateEmail');
 Route::patch('/profile/updatePassword', 'ProfileController@updatePassword');

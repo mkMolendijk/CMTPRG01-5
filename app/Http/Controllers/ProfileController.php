@@ -16,39 +16,44 @@ class profileController extends Controller
 
     public function index()
     {
+        // Get user object
+        $userObj = User::find(Auth::user()->id);
         // Get games from specific user
-        $games = Game::with("genre")->where('user_id', '=', Auth::getUser()->id)->where('enabled', '=', 1)->get();
+        $gameObj = Game::with('genre')->where('user_id', '=', Auth::getUser()->id)->where('enabled', '=', 1)->get();
 
-        return view('profile.index', compact('games'));
+        return view('profile.index', compact('gameObj', 'userObj'));
     }
 
     public function updateName(Request $request)
     {
-        // Get User ID
-        $userId = Auth::getUser()->id;
-        // Set POST data to var
-        $name = $request->inputName;
-
-        // Build query
-        $queryArr = ['id' => $userId, 'name' => $name];
-
-        // Run query
-        $user = User::where('id', '=', $userId)->first()->update($queryArr);
-
-        // Redirect back to profile page
-        return redirect('/profile');
+        // Check if anything is filled in
+        if ($request->filled('inputName')) {
+            // Find record in db
+            $userObj = User::find($request->inputId);
+            // Store new input data into object
+            $userObj->name = $request->inputName;
+            // Save new input data int db
+            $userObj->save();
+            // Redirect with success message
+            return redirect('/profile')->with('message', 'Successfully updated name');
+        } else {
+            return redirect()->back()->with('error', 'Fill in a value');
+        }
     }
 
     public function updateEmail(Request $request)
     {
-        $userId = Auth::getUser()->id;
-        $email = $request->inputEmail;
+        if ($request->filled('inputEmail')) {
+            $userObj = User::find($request->inputId);
 
-        $queryArr = ['id' => $userId, 'email' => $email];
+            $userObj->email = $request->inputEmail;
 
-        $user = User::where('id', '=', $userId)->first()->update($queryArr);
+            $userObj->save();
 
-        return redirect('/profile');
+            return redirect('/profile')->with('message', 'Successfully updated name');
+        } else {
+            return redirect()->back()->with('error', 'Fill in a value');
+        }
     }
 
     public function updatePassword(Request $request)
