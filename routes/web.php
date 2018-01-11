@@ -35,6 +35,7 @@ Route::group(['middleware' => ['auth', 'admin']], function () {
     //Genre routes
     Route::post('/admin/add-genre', 'AdminController@addGenre');
     Route::post('/admin/remove-genre', 'AdminController@removeGenre');
+    Route::post('/admin/edit-genre', 'AdminController@editGenre');
 });
 
 // User route group

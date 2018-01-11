@@ -47,20 +47,15 @@
                                             {{ method_field('POST') }}
                                             {{ csrf_field() }}
                                             <input type="hidden" name="genreId" value="{{ $genre->id }}">
-                                            <button class="btn btn-outline-danger">
+                                            <button class="btn btn-outline-danger float-right">
                                                 Remove
                                             </button>
                                         </form>
                                     </td>
                                     <td>
-                                        <form role="editGenre" method="PATCH" action="{{ 'admin/edit-genre' }}">
-                                            {{ method_field('PATCH') }}
-                                            {{ csrf_field() }}
-                                            <input type="hidden" name="genreId" value="{{ $genre->id }}">
-                                            <button class="btn btn-outline-success">
-                                                Edit
-                                            </button>
-                                        </form>
+                                        <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editGenre{{ $genre->id }}">
+                                            Edit
+                                        </button>
                                     </td>
                                 </tr>
                             @endforeach

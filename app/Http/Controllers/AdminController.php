@@ -89,6 +89,23 @@ class AdminController extends Controller
         return redirect('/admin/genres')->with('message', 'Successfully saved genre');
     }
 
+    public function editGenre(Request $request)
+    {
+        // Check if anything is filled in
+        if (!empty($request->genreTitle)) {
+            // Find record in db
+            $genreObj = Genre::find($request->genreId);
+            // Store new input data into object
+            $genreObj->title = $request->genreTitle;
+            // Save new input data int db
+            $genreObj->save();
+            // Redirect with success message
+            return redirect('/admin/genres')->with('message', 'Successfully update genre');
+        } else {
+            return redirect()->back()->with('error', 'Fill in a value');
+        }
+    }
+
     public function removeGenre(Request $request)
     {
         // Fetch genre
