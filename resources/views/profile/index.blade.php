@@ -25,21 +25,21 @@
                                 <td>Name:</td>
                                 <td>{{Auth::user()->name}}</td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editName">Edit</a>
+                                    <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editName">Edit</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email address:</td>
                                 <td>{{Auth::user()->email}}</td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editEmail">Edit</a>
+                                    <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editEmail">Edit</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Password</td>
                                 <td></td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editPass">Edit</a>
+                                    <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editPass">Edit</button>
                                 </td>
                             </tr>
                         </table>
