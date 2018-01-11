@@ -76,23 +76,27 @@ class AdminController extends Controller
 
     public function addGenre(Request $request)
     {
-        // Create new Genre instance
-        $genre = new Genre;
+        if ($request->filled('genreTitle')) {
+            // Create new Genre instance
+            $genre = new Genre;
 
-        // Store input data into var
-        $genre->title = $request->genreTitle;
+            // Store input data into var
+            $genre->title = $request->genreTitle;
 
-        // Save input data into db
-        $genre->save();
+            // Save input data into db
+            $genre->save();
 
-        // Redirect with success message
-        return redirect('/admin/genres')->with('message', 'Successfully saved genre');
+            // Redirect with success message
+            return redirect('/admin/genres')->with('message', 'Successfully saved genre');
+        } else {
+            return redirect()->back()->with('error', 'Something went wrong. Try again');
+        }
     }
 
     public function editGenre(Request $request)
     {
         // Check if anything is filled in
-        if (!empty($request->genreTitle)) {
+        if ($request->filled('genreTitle')) {
             // Find record in db
             $genreObj = Genre::find($request->genreId);
             // Store new input data into object
@@ -100,7 +104,7 @@ class AdminController extends Controller
             // Save new input data int db
             $genreObj->save();
             // Redirect with success message
-            return redirect('/admin/genres')->with('message', 'Successfully update genre');
+            return redirect(' / admin / genres')->with('message', 'Successfully update genre');
         } else {
             return redirect()->back()->with('error', 'Fill in a value');
         }
@@ -115,6 +119,6 @@ class AdminController extends Controller
         Genre::find($genreId)->delete();
 
         // Redirect back
-        return redirect('/admin/genres')->with('message', 'Successfully deleted genre');
+        return redirect(' / admin / genres')->with('message', 'Successfully deleted genre');
     }
 }
