@@ -27,34 +27,38 @@ class profileController extends Controller
 
     public function updateName(Request $request)
     {
-        // Check if anything is filled in
-        if ($request->filled('inputName')) {
-            // Find record in db
-            $userObj = User::find($request->inputId);
-            // Store new input data into object
-            $userObj->name = $request->inputName;
-            // Save new input data int db
-            $userObj->save();
-            // Redirect with success message
-            return redirect('/profile')->with('message', 'Successfully updated name');
-        } else {
-            return redirect()->back()->with('error', 'Fill in a value');
-        }
+        // Validate input
+        $request->validate([
+            'inputName' => 'bail|required|max:255'
+        ]);
+
+        // Find record in db
+        $userObj = User::find($request->inputId);
+
+        // Store new input data into object
+        $userObj->name = $request->inputName;
+
+        // Save new input data int db
+        $userObj->save();
+
+        // Redirect with success message
+        return redirect('/profile')->with('message', 'Successfully updated name');
+
     }
 
     public function updateEmail(Request $request)
     {
-        if ($request->filled('inputEmail')) {
-            $userObj = User::find($request->inputId);
+        $request->validate([
+            'inputEmail' => 'bail|required|max:255'
+        ]);
 
-            $userObj->email = $request->inputEmail;
+        $userObj = User::find($request->inputId);
 
-            $userObj->save();
+        $userObj->email = $request->inputEmail;
 
-            return redirect('/profile')->with('message', 'Successfully updated name');
-        } else {
-            return redirect()->back()->with('error', 'Fill in a value');
-        }
+        $userObj->save();
+
+        return redirect('/profile')->with('message', 'Successfully updated name');
     }
 
     public function updatePassword(Request $request)

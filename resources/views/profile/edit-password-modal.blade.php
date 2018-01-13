@@ -13,6 +13,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="inputPassword">Password</label>
+                        <input type="hidden" id="inputId" name="inputId" value="{{ $userObj->id }}">
                         <input type="password" class="form-control" id="inputPassword"
                                name="inputPassword" placeholder="New password">
                     </div>

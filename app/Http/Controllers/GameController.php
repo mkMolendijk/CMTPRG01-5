@@ -58,58 +58,63 @@ class GameController extends Controller
 
     public function addGame(Request $request)
     {
-        if ($request->filled('gameTitle', 'gameImg', 'gameGenre')) {
-            $game = new Game;
+        $request->validate([
+            'gameTitle' => 'bail|required|max:255',
+            'gameGenre' => 'bail|required',
+            'gameImg' => 'bail|required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gameDesc' => 'bail|required|max:255',
+        ]);
 
-            $game->title = $request->gameTitle;
+        $game = new Game;
 
-            $fileName = $request->gameImg->getClientOriginalName();
-            $fileImg = $request->gameImg;
-            $gameImgPath = public_path() . '/images/';
+        $game->title = $request->gameTitle;
 
-            $fileImg->move($gameImgPath, $fileName);
+        $fileName = $request->gameImg->getClientOriginalName();
+        $fileImg = $request->gameImg;
+        $gameImgPath = public_path() . '/images/';
 
-            $game->image = '/images/' . $fileName;
+        $fileImg->move($gameImgPath, $fileName);
 
-            $genreTitle = $request->gameGenre;
-            $genreId = Genre::where('title', '=', $genreTitle)->value('id');
-            $game->genre_id = $genreId;
+        $game->image = '/images/' . $fileName;
 
-            $game->description = $request->gameDesc;
+        $genreTitle = $request->gameGenre;
+        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
+        $game->genre_id = $genreId;
 
-            $game->user_id = Auth::user()->id;
+        $game->description = $request->gameDesc;
 
-            $game->save();
+        $game->user_id = Auth::user()->id;
 
-            if (Auth::user()->admin == true) {
-                return redirect('/admin/games')->with('message', 'Successfully saved game');
-            } else {
-                return redirect('/dashboard/')->with('message', 'Successfully saved game');
-            }
+        $game->save();
+
+        if (Auth::user()->admin == true) {
+            return redirect('/admin/games')->with('message', 'Successfully saved game');
         } else {
-            return redirect()->back()->with('error', 'Something went wrong. Try again');
+            return redirect('/dashboard/')->with('message', 'Successfully saved game');
         }
     }
 
     public function editGameDetails(Request $request, $id)
     {
-        if ($request->filled('gameTitle', 'gameGenre')) {
-            $gameObj = Game::find($id);
+        $request->validate([
+            'gameTitle' => 'bail|required|max:255',
+            'gameGenre' => 'bail|required',
+            'gameDesc' => 'bail|required|max:255'
+        ]);
 
-            $gameObj->title = $request->gameTitle;
+        $gameObj = Game::find($id);
 
-            $genreTitle = $request->gameGenre;
-            $genreId = Genre::where('title', '=', $genreTitle)->value('id');
-            $gameObj->genre_id = $genreId;
+        $gameObj->title = $request->gameTitle;
 
-            $gameObj->description = $request->gameDesc;
+        $genreTitle = $request->gameGenre;
+        $genreId = Genre::where('title', '=', $genreTitle)->value('id');
+        $gameObj->genre_id = $genreId;
 
-            $gameObj->save();
+        $gameObj->description = $request->gameDesc;
 
-            return redirect('/game/game-detail/' . $id)->with('message', 'Successfully updated game');
-        } else {
-            return redirect()->back()->with('error', 'Something went wrong. Try again');
-        }
+        $gameObj->save();
+
+        return redirect('/game/game-detail/' . $id)->with('message', 'Successfully updated game');
     }
 
     public function like(Request $request)

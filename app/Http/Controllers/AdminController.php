@@ -76,38 +76,42 @@ class AdminController extends Controller
 
     public function addGenre(Request $request)
     {
-        if ($request->filled('genreTitle')) {
-            // Create new Genre instance
-            $genre = new Genre;
+        // Validate input
+        $request->validate([
+            'genreTitle' => 'bail|required|max:255'
+        ]);
 
-            // Store input data into var
-            $genre->title = $request->genreTitle;
+        // Create new Genre instance
+        $genre = new Genre;
 
-            // Save input data into db
-            $genre->save();
+        // Store input data into var
+        $genre->title = $request->genreTitle;
 
-            // Redirect with success message
-            return redirect('/admin/genres')->with('message', 'Successfully saved genre');
-        } else {
-            return redirect()->back()->with('error', 'Something went wrong. Try again');
-        }
+        // Save input data into db
+        $genre->save();
+
+        // Redirect with success message
+        return redirect('/admin/genres')->with('message', 'Successfully saved genre');
+
     }
 
     public function editGenre(Request $request)
     {
-        // Check if anything is filled in
-        if ($request->filled('genreTitle')) {
-            // Find record in db
-            $genreObj = Genre::find($request->genreId);
-            // Store new input data into object
-            $genreObj->title = $request->genreTitle;
-            // Save new input data int db
-            $genreObj->save();
-            // Redirect with success message
-            return redirect(' /admin/genres')->with('message', 'Successfully update genre');
-        } else {
-            return redirect()->back()->with('error', 'Fill in a value');
-        }
+        $request->validate([
+            'genreTitle' => 'bail|required|max:255'
+        ]);
+
+        // Find record in db
+        $genreObj = Genre::find($request->genreId);
+
+        // Store new input data into object
+        $genreObj->title = $request->genreTitle;
+
+        // Save new input data int db
+        $genreObj->save();
+
+        // Redirect with success message
+        return redirect(' /admin/genres')->with('message', 'Successfully update genre');
     }
 
     public function removeGenre(Request $request)

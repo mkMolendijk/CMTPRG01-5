@@ -29,7 +29,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="gameDesc">Enter description (optional)</label>
+                        <label for="gameDesc">Enter description</label>
                         <textarea class="form-control" id="gameDesc" name="gameDesc" rows="3"></textarea>
                     </div>
                 </div>
