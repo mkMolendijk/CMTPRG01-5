@@ -29,14 +29,14 @@
                         <table class="table">
                             <tr>
                                 <td>Name:</td>
-                                <td>{{$userObj->name}}</td>
+                                <td>{{ $userObj->name }}</td>
                                 <td>
                                     <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editName">Edit</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email address:</td>
-                                <td>{{$userObj->email}}</td>
+                                <td>{{ $userObj->email }}</td>
                                 <td>
                                     <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editEmail">Edit</button>
                                 </td>

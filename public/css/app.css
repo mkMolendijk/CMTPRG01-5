@@ -9819,6 +9819,21 @@ body {
   margin: 0;
 }
 
+.game-img-container {
+  width: 100%;
+  height: 100%;
+  max-height: 50%;
+}
+
+.game-img-container img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+
 .game-img {
   width: 100%;
 }

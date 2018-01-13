@@ -2,7 +2,9 @@
     @forelse($games as $game)
         <div class="col-md-6 col-md-6 col-lg-4 spacing-bottom">
             <div class="card h-100">
-                <img class="card-img-top" src="{{ $game->image }}">
+                <div class="game-img-container">
+                    <img class="card-img-top" src="{{ $game->image }}">
+                </div>
                 <div class="card-body">
                     <h4 class="card-title">{{ $game->title }}</h4>
                     <p class="card-text">{{ $game->genre->title }}</p>

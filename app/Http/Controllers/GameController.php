@@ -11,16 +11,19 @@ class GameController extends Controller
 {
     public function showDetails($id)
     {
-        // Get game with id, genre and user
-        $gameObj = Game::with(["genre", "user", "likedBy"])->where('id', '=', $id)->get();
+        // Get game with id, genre, user and likes
+        $gameObj = Game::with(["genre", "user", "likedBy"])->where('id', '=', $id)->withCount('likedBy')->get();
+
+        // Get logged in user
+        $loggedInUser = Auth::user();
 
         // Get genres for the edit game modal
         $genreObj = Genre::all();
 
         // Check if user is uploader
-        $currentUser = Auth::user()->id;
-        $uploader = false;
+        $currentUser = $loggedInUser->id;
 
+        $uploader = false;
         foreach ($gameObj as $object) {
             if ($currentUser === $object->user_id) {
                 $uploader = true;
@@ -29,32 +32,28 @@ class GameController extends Controller
 
         // Check if user is admin
         $admin = false;
-
-        if (Auth::user()->admin == true) {
+        if ($loggedInUser->admin == true) {
             $admin = true;
         }
 
         // Get likes
         foreach ($gameObj as $game) {
-            $likesNum = $game->likedBy->count();
-
             foreach ($game->likedBy as $usersLiked) {
-                $userID[] = $usersLiked->id;
+                $userId[] = $usersLiked->id;
             }
         }
 
         // Check if user liked this game
-        $liked = null;
-        if (!empty($userID)) {
-            if (in_array(Auth::user()->id, $userID)) {
+        $liked = false;
+        if (!empty($userId)) {
+            if (in_array($loggedInUser->id, $userId)) {
                 $liked = true;
             } else {
                 $liked = false;
             }
         }
 
-        return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin', 'likesNum', 'liked'));
-
+        return view('game/game-detail', compact('gameObj', 'genreObj', 'uploader', 'admin', 'liked'));
     }
 
     public function addGame(Request $request)

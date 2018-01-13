@@ -2,7 +2,7 @@
     @forelse($games as $game)
         <div class="col-sm-6 col-md-6 col-lg-4 spacing-bottom">
             <div class="card h-100">
-                <div class="card-img">
+                <div class="game-img-container">
                     <img class="card-img-top" src="{{ $game->image }}">
                 </div>
                 <div class="card-body">

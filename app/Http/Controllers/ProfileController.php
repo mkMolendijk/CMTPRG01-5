@@ -17,9 +17,10 @@ class profileController extends Controller
     public function index()
     {
         // Get user object
-        $userObj = User::find(Auth::user()->id);
+        $userObj = Auth::user();
+
         // Get games from specific user
-        $gameObj = Game::with('genre')->where('user_id', '=', Auth::getUser()->id)->where('enabled', '=', 1)->get();
+        $gameObj = Game::with('genre')->where('user_id', '=', $userObj->id)->where('enabled', '=', 1)->get();
 
         return view('profile.index', compact('gameObj', 'userObj'));
     }
@@ -58,6 +59,7 @@ class profileController extends Controller
 
     public function updatePassword(Request $request)
     {
+        // Todo: Refactor this function
         $userId = Auth::getUser()->id;
         $pass = bcrypt($request->inputPassword);
 

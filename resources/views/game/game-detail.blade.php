@@ -14,7 +14,8 @@
                 @include('partials/back')
 
                 @if($uploader == true || $admin == true)
-                    <button href="" class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editGame">
+                    <button href="" class="btn btn-outline-success float-right" data-toggle="modal"
+                            data-target="#editGame">
                         Edit game
                     </button>
                 @endif
@@ -24,9 +25,7 @@
         <div class="row">
             @foreach($gameObj as $game)
                 <div class="col-md">
-                    <div class="game-img-container spacing-bottom">
-                        <img class="game-img" src="{{ $game->image }}" alt="{{ $game->name }}"/>
-                    </div>
+                    <img class="game-img spacing-bottom rounded" src="{{ $game->image }}" alt="{{ $game->name }}"/>
                 </div>
 
                 <div class="col-md">
@@ -65,8 +64,8 @@
                                     Likes:
                                 </strong>
                                 <p class="likes">
-                                    @if(!empty($likesNum))
-                                        {{ $likesNum }}
+                                    @if(!empty($game->liked_by_count))
+                                        {{ $game->liked_by_count }}
                                     @else
                                         0
                                     @endif
