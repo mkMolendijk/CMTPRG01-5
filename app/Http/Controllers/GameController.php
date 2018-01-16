@@ -6,10 +6,11 @@ use myGamesList\Game;
 use myGamesList\Genre;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use myGamesList\User;
 
 class GameController extends Controller
 {
-    public function showDetails($id)
+    public function showDetails(Request $request,$id)
     {
         // Get game with id, genre, user and likes
         $gameObj = Game::with(["genre", "user", "likedBy"])->where('id', '=', $id)->withCount('likedBy')->get();

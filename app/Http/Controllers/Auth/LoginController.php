@@ -25,11 +25,12 @@ class LoginController extends Controller
     protected function authenticated($request, $user)
     {
         if ($user->enabled === 1) {
-            if ($user->admin === 1) {
+            if ($request->user()->hasRole('Admin')) {
                 return redirect()->intended('/admin');
             }
-
-            return redirect()->intended('/dashboard');
+            if ($request->user()->hasRole('User')) {
+                return redirect()->intended('/dashboard');
+            }
         } else {
             // TODO Make redirect back to home without logging in
             return redirect('/');

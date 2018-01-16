@@ -6,6 +6,7 @@ use myGamesList\User;
 use myGamesList\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use myGamesList\Role;
 
 class RegisterController extends Controller
 {
@@ -62,12 +63,16 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'admin' => false,
             'active' => true
         ]);
+
+        $role = Role::find(3);
+        $user->roles()->attach($role);
+        return $user;
     }
 }
