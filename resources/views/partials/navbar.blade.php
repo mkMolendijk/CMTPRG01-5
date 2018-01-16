@@ -30,7 +30,7 @@
                     </a>
                 </li>
             @else
-                @if (Auth::user()['admin'])
+                @if (Auth::user()->hasRole('Admin'))
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="{{ url('/admin') }}"
                            id="navbarDropdownMenuLink"

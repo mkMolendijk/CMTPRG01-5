@@ -33,7 +33,7 @@ class GameController extends Controller
 
         // Check if user is admin
         $admin = false;
-        if ($loggedInUser->admin == true) {
+        if (Auth::user()->hasRole('Admin')) {
             $admin = true;
         }
 
@@ -88,7 +88,7 @@ class GameController extends Controller
 
         $game->save();
 
-        if (Auth::user()->admin == true) {
+        if (Auth::user()->hasRole('Admin')) {
             return redirect('/admin/games')->with('message', 'Successfully saved game');
         } else {
             return redirect('/dashboard/')->with('message', 'Successfully saved game');

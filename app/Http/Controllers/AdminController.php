@@ -5,6 +5,7 @@ namespace myGamesList\Http\Controllers;
 use myGamesList\Game;
 use myGamesList\Genre;
 use myGamesList\User;
+use myGamesList\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -40,9 +41,11 @@ class AdminController extends Controller
     public function toggleAdminStatus(Request $request, $id)
     {
         $user = User::find($id);
+        $adminRole = Role::find(2);
         if ($request->ajax()) {
-            $user->admin = !$user->admin;
-            $user->save();
+            if (!$user->hasRole('Admin')) {
+                $user->roles()->attach($adminRole);
+            }
         }
     }
 

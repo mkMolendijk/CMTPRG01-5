@@ -57,7 +57,7 @@
                                     <td class="td-centered">{{ $user->id }}</td>
                                     <td class="td-centered">{{ $user->name }}</td>
                                     <td class="td-centered">{{ $user->email }}</td>
-                                    @if($user->admin == 1)
+                                    @if($user->hasRole('Admin'))
                                         <td class="td-centered">
                                             Admin
                                         </td>
@@ -77,7 +77,7 @@
                                     </td>
                                     <td>
                                         <input type="checkbox" id="{{$user->id}}" class="is-admin" data-toggle="toggle"
-                                               @if($user->admin)checked @endif >
+                                               @if($user->hasRole('Admin'))checked @endif >
                                     </td>
                                 </tr>
                             @endforeach
