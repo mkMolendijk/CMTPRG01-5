@@ -45,6 +45,8 @@ class AdminController extends Controller
         if ($request->ajax()) {
             if (!$user->hasRole('Admin')) {
                 $user->roles()->attach($adminRole);
+            } else {
+                $user->roles()->detach($adminRole);
             }
         }
     }
