@@ -1,5 +1,5 @@
-<div class="card-deck">
-    @forelse($gameObj as $game)
+@forelse($gameObj as $game)
+    <div class="card-deck">
         <div class="col-sm-6 col-md-6 col-lg-4 spacing-bottom">
             <div class="card h-100">
                 <div class="game-img-container">
@@ -16,9 +16,9 @@
                 </div>
             </div>
         </div>
-    @empty
-        <div class="alert alert-danger" role="alert">
-            No games found
-        </div>
-    @endforelse
-</div>
+    </div>
+@empty
+    <div class="alert alert-danger" role="alert">
+        No games found
+    </div>
+@endforelse
