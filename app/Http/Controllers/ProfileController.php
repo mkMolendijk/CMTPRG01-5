@@ -16,43 +16,54 @@ class profileController extends Controller
 
     public function index()
     {
-        // Get games from specific user
-        $games = Game::with("genre")->where('user_id', '=', Auth::getUser()->id)->where('enabled', '=', 1)->get();
+        // Get user object
+        $userObj = Auth::user();
 
-        return view('profile.index', compact('games'));
+        // Get games from specific user
+        $gameObj = Game::with('genre')->where('user_id', '=', $userObj->id)->where('enabled', '=', 1)->get();
+
+        return view('profile.index', compact('gameObj', 'userObj'));
     }
 
     public function updateName(Request $request)
     {
-        // Get User ID
-        $userId = Auth::getUser()->id;
-        // Set POST data to var
-        $name = $request->inputName;
+        // Validate input
+        $request->validate([
+            'inputName' => 'bail|required|max:255'
+        ]);
 
-        // Build query
-        $queryArr = ['id' => $userId, 'name' => $name];
+        // Find record in db
+        $userObj = User::find($request->inputId);
 
-        // Run query
-        $user = User::where('id', '=', $userId)->first()->update($queryArr);
+        // Store new input data into object
+        $userObj->name = $request->inputName;
 
-        // Redirect back to profile page
-        return redirect('/profile');
+        // Save new input data int db
+        $userObj->save();
+
+        // Redirect with success message
+        return redirect('/profile')->with('message', 'Successfully updated name');
+
     }
 
     public function updateEmail(Request $request)
     {
-        $userId = Auth::getUser()->id;
-        $email = $request->inputEmail;
+        $request->validate([
+            'inputEmail' => 'bail|required|max:255'
+        ]);
 
-        $queryArr = ['id' => $userId, 'email' => $email];
+        $userObj = User::find($request->inputId);
 
-        $user = User::where('id', '=', $userId)->first()->update($queryArr);
+        $userObj->email = $request->inputEmail;
 
-        return redirect('/profile');
+        $userObj->save();
+
+        return redirect('/profile')->with('message', 'Successfully updated name');
     }
 
     public function updatePassword(Request $request)
     {
+        // Todo: Refactor this function
         $userId = Auth::getUser()->id;
         $pass = bcrypt($request->inputPassword);
 

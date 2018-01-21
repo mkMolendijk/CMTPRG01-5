@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Laravel</title>
+    <title>My Games List</title>
 
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -14,6 +14,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+<<<<<<< HEAD
 <nav class="navbar navbar-default navbar-static-top">
     <div class="top-left links">
         <p>
@@ -35,6 +36,11 @@
         </div>
     @endif
 </nav>
+=======
+
+@include('partials/navbar')
+
+>>>>>>> dev
 <div class="jumbotron">
     <div class="container-fluid">
         <div class="row">

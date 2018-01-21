@@ -3,36 +3,49 @@
 @section('title')
     {{Auth::user()->name}}'s profile
 @endsection
-{{-- TODO: Refactor profile page --}}
+
 @section('content')
     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h4>{{Auth::user()->name}}</h4>
-                    </div>
-                    <div class="panel-body">
+
+        <div class="row spacing-bottom">
+            <div class="col-md">
+                @include('partials/back')
+            </div>
+        </div>
+
+        <div class="row spacing-bottom">
+            <div class="col-md">
+                @include('partials/session-status')
+            </div>
+        </div>
+
+        <div class="row spacing-bottom">
+            <div class="col-md">
+                <div class="card">
+                    <h3 class="card-header">
+                        My Details
+                    </h3>
+                    <div class="card-body">
                         <table class="table">
                             <tr>
                                 <td>Name:</td>
-                                <td>{{Auth::user()->name}}</td>
+                                <td>{{ $userObj->name }}</td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editName">Edit</a>
+                                    <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editName">Edit</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Email address:</td>
-                                <td>{{Auth::user()->email}}</td>
+                                <td>{{ $userObj->email }}</td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editEmail">Edit</a>
+                                    <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editEmail">Edit</button>
                                 </td>
                             </tr>
                             <tr>
                                 <td>Password</td>
                                 <td></td>
                                 <td>
-                                    <a data-toggle="modal" data-target="#editPass">Edit</a>
+                                    <button class="btn btn-outline-success float-right" data-toggle="modal" data-target="#editPass">Edit</button>
                                 </td>
                             </tr>
                         </table>
@@ -45,49 +58,17 @@
         </div>
 
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
+            <div class="col-md">
+                <div class="card">
+                    <h3 class="card-header">
                         My Games
-                        <div class="game-controls pull-right">
-                            <div class="btn-group">
-                                <a href="#" id="list" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-th-list"></span>
-                                    List
-                                </a>
-                                <a href="#" id="grid" class="btn btn-default btn-sm">
-                                    <span class="glyphicon glyphicon-th"></span>
-                                    Grid
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel-body">
-                        <!-- Table -->
-                    @include('profile/games-list')
-
-                    <!-- Grid -->
+                    </h3>
+                    <div class="card-body">
+                        <!-- Grid -->
                         @include('profile/games-grid')
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
-
-@section('footer')
-    <script>
-        $(document).ready(function () {
-            $('#list').click(function (event) {
-                event.preventDefault();
-                $('#games-list').css('display', 'block');
-                $('#games-flex-grid').css('display', 'none');
-            });
-            $('#grid').click(function (event) {
-                event.preventDefault();
-                $('#games-flex-grid').css('display', 'flex');
-                $('#games-list').css('display', 'none');
-            });
-        });
-    </script>
 @endsection

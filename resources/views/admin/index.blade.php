@@ -3,52 +3,41 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">Admin Dashboard</div>
-                    <div class="panel-body">
-                        @include('partials/session-status')
-                        <div class="admin-panel-container">
-                            <a class="block-link" href="{{ url('/admin/manage-users') }}">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        Manage users
-                                    </div>
-                                    <div class="panel-body">
-                                        <h1 class="icon-centered">
-                                            <span class="glyphicon glyphicon-user"></span>
-                                        </h1>
-                                    </div>
+            <div class="col-md">
+                <h1 class="text-center spacing-bottom">Admin Panel</h1>
+
+                @include('partials/session-status')
+                <div class="admin-card-container">
+                    <div class="row">
+                        <div class="col-md">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Manage users</h4>
+                                    <p class="card-text">List all users</p>
+                                    <a class="btn btn-outline-primary" href="{{ url('/admin/users') }}">Manage users</a>
                                 </div>
-                            </a>
-                            <a class="block-link" href="{{ url('/admin/manage-games') }}">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        Manage games
-                                    </div>
-                                    <div class="panel-body">
-                                        <h1 class="icon-centered">
-                                            <span class="glyphicon glyphicon-list-alt"></span>
-                                        </h1>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Manage games</h4>
+                                    <p class="card-text">List all games</p>
+                                    <a class="btn btn-outline-primary" href="{{ url('/admin/games') }}">Manage games</a>
                                 </div>
-                            </a>
-                            <a class="block-link" href="{{ url('/admin/manage-genres') }}">
-                                <div class="panel panel-primary">
-                                    <div class="panel-heading">
-                                        Manage Genre's
-                                    </div>
-                                    <div class="panel-body">
-                                        <h1 class="icon-centered">
-                                            <span class="glyphicon glyphicon-pencil"></span>
-                                        </h1>
-                                    </div>
+                            </div>
+                        </div>
+                        <div class="col-md">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Manage genres</h4>
+                                    <p class="card-title">List all genres</p>
+                                    <a class="btn btn-outline-primary" href="{{ url('/admin/genres') }}">Manage genres</a>
                                 </div>
-                            </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 @endsection

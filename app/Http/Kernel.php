@@ -57,6 +57,7 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \myGamesList\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'admin' => \myGamesList\Http\Middleware\AdminMiddleware::class
+        'admin' => \myGamesList\Http\Middleware\AdminMiddleware::class,
+        'user' => \myGamesList\Http\Middleware\UserMiddleware::class
     ];
 }

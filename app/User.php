@@ -27,7 +27,38 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function games() {
+    public function games()
+    {
         return $this->hasMany(Game::class);
+    }
+
+    public function likes()
+    {
+        return $this->belongsToMany(Game::class, 'likes')->withPivot('game_id');
+    }
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class, 'user_role')->withPivot('role_id');
+    }
+
+//    public function authorizeRoles($roles)
+//    {
+//        if (is_array($roles)) {
+//            return $this->hasAnyRole($roles) ||
+//                abort(401, 'This action is unauthorized.');
+//        }
+//        return $this->hasRole($roles) ||
+//            abort(401, 'This action is unauthorized.');
+//    }
+//
+//    public function hasAnyRole($roles)
+//    {
+//        return null !== $this->roles()->whereIn('title', $roles)->first();
+//    }
+
+    public function hasRole($role)
+    {
+        return null !== $this->roles()->where('title', $role)->first();
     }
 }

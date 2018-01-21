@@ -17,20 +17,19 @@ Route::get('/', function () {
 
 Auth::routes();
 
-//Admin routes
-Route::group(['middleware' => ['auth', 'admin']], function()
-{
+// Admin route group
+Route::group(['middleware' => ['auth', 'admin']], function () {
     // View routes
     Route::get('/admin', 'AdminController@index')->name('admin');
-    Route::get('/admin/manage-users', 'AdminController@manageUsers');
-    Route::get('/admin/manage-games', 'AdminController@manageGames');
-    Route::get('/admin/manage-genres', 'AdminController@manageGenres');
-    Route::get('/admin/game-detail/{id}', 'AdminController@gameDetail');
+    Route::get('/admin/users', 'AdminController@manageUsers');
+    Route::get('/admin/games', 'AdminController@manageGames');
+    Route::get('/admin/genres', 'AdminController@manageGenres');
 
     // User status routes
-    Route::get('/admin/{id}/toggleEnabledStatus', 'AdminController@toggleEnabledStatus');
-    Route::get('/admin/{id}/toggleAdminStatus', 'AdminController@toggleAdminStatus');
+    Route::post('/admin/{id}/toggleEnabledStatus', 'AdminController@toggleEnabledStatus');
+    Route::post('/admin/{id}/toggleAdminStatus', 'AdminController@toggleAdminStatus');
 
+<<<<<<< HEAD
     //Game status route
     Route::get('/admin/{id}/gameStatusToggle', 'AdminController@gameStatusToggle');
 
@@ -40,22 +39,43 @@ Route::group(['middleware' => ['auth', 'admin']], function()
 
     // Edit game route
     Route::patch('/admin/editGameDetails/{id}', 'AdminController@editGameDetails');
+=======
+    // Game status route
+    Route::post('/admin/{id}/gameStatusToggle', 'AdminController@gameStatusToggle');
+
+    //Genre routes
+    Route::post('/admin/add-genre', 'AdminController@addGenre');
+    Route::post('/admin/remove-genre', 'AdminController@removeGenre');
+    Route::post('/admin/edit-genre', 'AdminController@editGenre');
+>>>>>>> dev
 });
 
-// User routes
-Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-Route::get('/dashboard/game-detail/{id}', 'DashboardController@gameDetail');
+// User route group
+Route::group(['middleware' => ['auth', 'user']], function () {
+    // User routes
+    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
+});
 
+<<<<<<< HEAD
 // Edit game route
 Route::patch('/dashboard/editGameDetails/{id}', 'DashboardController@editGameDetails');
 
 // Dashboard page, add game
 Route::post('/dashboard/addGame', 'DashboardController@addGame');
+=======
+// Search route
+Route::post('/search', 'SearchController@search');
+>>>>>>> dev
 
-// Profile page route
+// Game routes
+Route::get('/game/game-detail/{id}', 'GameController@showDetails');
+Route::patch('/game/edit-game-details/{id}', 'GameController@editGameDetails');
+Route::post('/game/add-game', 'GameController@addGame');
+Route::post('game/like', 'GameController@like');
+Route::post('game/unlike', 'GameController@unlike');
+
+// Profile routes
 Route::get('/profile', 'ProfileController@index');
-
-// Profile edit routes
-Route::patch('/profile/updateName', 'ProfileController@updateName');
-Route::patch('/profile/updateEmail', 'ProfileController@updateEmail');
+Route::post('/profile/update-name', 'ProfileController@updateName');
+Route::post('/profile/update-email', 'ProfileController@updateEmail');
 Route::patch('/profile/updatePassword', 'ProfileController@updatePassword');
